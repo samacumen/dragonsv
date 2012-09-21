@@ -1,0 +1,57 @@
+\section{A section}
+\label{sec:exampleA}
+
+You can see a random figure in Figure \ref{fig:googlelogo}.
+
+A list:
+\begin{itemize}
+\item An item
+\item And another one
+\end{itemize}
+
+\begin{figure}[h]
+\center
+\includegraphics[width=0.6\textwidth]{google}
+\caption{This is the google logo}
+\label{fig:googlelogo}
+\end{figure}
+
+
+An example of a table is given in table \ref{tab:randomtable}. See the literature list at the end of the report somewhere.
+
+\begin{table}[h]
+\center
+\begin{tabular}{|l|c|}\hline
+left aligned column & centred column \\\hline
+next row  & random content\\\hline
+\end{tabular}
+\caption{This table contains stuff}
+\label{tab:randomtable}
+\end{table}
+
+This is an example of a reference \cite{becker}.
+
+And here a new example: pseudocode \ref{algo:dfs}!
+\begin{algorithm}
+\caption{\proc{DepthFirstSearch}}
+\label{algo:dfs}
+\begin{algorithmic}[1]
+\REQUIRE A graph $G=(V,E)$ in adjacency list presentation, starting vertex $v$, an empty stack $S$
+\ENSURE All vertices in this connected component labelled
+\STATE label $v$
+\STATE push all neighbours of $v$ on $S$
+\WHILE{$S$ \NOT empty}
+	\STATE $w \leftarrow$ pop $S$
+	\STATE label $w$
+	\FOR{$u$ in adjacency list $w$}
+		\IF{$u$ \NOT labelled}
+			\STATE push $u$ onto $S$
+		\ENDIF
+	\ENDFOR
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+
+\section{Another section}
+You should read all the stuff in section \ref{sec:exampleA}. This section holds only an example of a reference ;)

@@ -1,0 +1,18 @@
+\section*{Global Requirements}
+In the section, we describe the global requirements to required initially for the design of the controller:\\
+\begin{enumerate}
+\item Each elevator, rack and conveyor belt contains at most one packet.
+\item Packet is exchanged only when the elevator platform is at the same level as that of a conveyor belt.
+\item Packet is exchanged only when elevator platform is at the same level as that of a rack.
+\item The two elevators cannot be at the same position.
+\item The lower elevator must never pass the upper one.
+\item Packets are always delivered in the same order as requested.
+\item If a packet is ready to enter and there is a free position at the rack(s), it will be eventually accepted.
+\item If a requested packet is in the system, it will be eventually delivered.
+\item If a packet is unable to be located, a unique alarm must be generated.
+\item The number of packets in the system can at most be equal to the number of racks.
+%\item \textbf{How:} It should be always possible to know the number of packets in the system.(design decision we will confirm this one after we have decided about working mechanism of our system.)
+
+%\item \textbf{Assumption:} Lower elevator cannot reach the lowest rack and highest elevator cannot reach the highest rack.(remove this one.Since it is included in 4, we do not need to state it again.)
+
+\end{enumerate}
