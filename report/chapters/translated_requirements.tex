@@ -1,0 +1,90 @@
+%Lists all the translated global requirements
+% This must cover all possible scenario for each of the global requirements that we decided.
+% I have tried to list out all possiblities (in a way that modal-u-calculus) can be written for these translations (sounding negative is important to formulate modal formula much easily). Refer to the report from last year. Feel free to include anything that I may have missed out. (Leave a comment also so that we are aware what changed)
+
+This section lists the requirements from section \ref{sec:global_req} in terms of interactions described in section \ref{sec:ext_interactions}.
+
+\begin{enumerate}
+\item \textit{Each elevator, rack and conveyor belt contains at most one packet}
+	\begin{itemize}
+	\item There is a packet on the conveyor belt, so no
+	packet is allowed to enter.
+	\item There is no packet on the conveyor belt, so no 
+	packet is allowed to leave.	
+	\item There is a packet on the elevator, so no packet is 
+	allowed to be loaded.
+	\item There is no packet on the elevator, so no packet is 
+	allowed to be unloaded.
+	\item There is a packet on the rack, so no packet is 
+	allowed to be stored.
+	\item There is no packet on the rack, so no packet is 
+	allowed to leave.
+	\end{itemize}
+\item \textit{ Packet is exchanged only when the elevator platform is at the same level as that of a conveyor belt}
+	\begin{itemize}
+	\item  If elevator platform is not on the same level of input 
+	conveyor belt, no packet is loaded onto the elevator.
+	\item If elevator platform is not the same level as the output 
+	conveyor belt, no packet is loaded onto the conveyor belt.
+	\end{itemize}
+
+\item \textit{Packet is exchanged only when elevator platform is at the same level as that of a rack}
+	\begin{itemize}
+	\item  If position of rack and elevator platform are different, no
+	packet is stored onto the rack.
+	\item  If position of rack and elevator platform are different, no
+	packet is loaded onto the elevator platform from the rack.
+	\end{itemize}
+
+\item \textit{The two elevators cannot be at the same position}
+	\begin{itemize}
+	\item  It cannot happen that two elevators are at the same 
+	position.
+	\end{itemize}	
+	
+\item \textit{The lower elevator must never pass the upper one}
+	\begin{itemize}
+	\item The lower elevator is always below the upper elevator.
+	\item The lower elevator cannot go to the highest position.
+	\item The upper elevator cannot go to the lowest position.
+	\end{itemize}
+	
+\item \textit{Packets are always delivered in the same order as
+	requested}	
+	\begin{itemize}
+	\item It is not possible to receive packet(s) in an order different
+	than as requested.
+	\end{itemize}
+	
+\item \textit{If a packet is ready to enter and there is a free
+	position at the rack(s), it will be eventually accepted}
+	\begin{itemize}
+	\item If there is no free position in racks, packet must not be 
+	accepted.
+	\item If there is a free position in the racks and the packet is 
+	ready to enter, it must be eventually stored.
+	\end{itemize}
+	
+\item \textit{If a requested packet is in the system, it will be
+	eventually delivered}
+	\begin{itemize}
+	\item If a packet is requested and it is in the system, it must be
+	delivered eventually.
+	\item If a packet is requested and it is not in the system, no 
+	packet is delivered.
+	\end{itemize}
+	
+\item \textit{If a packet is unable to be located, a unique alarm must 
+	be generated}
+	\begin{itemize}	
+	\item If the requested packet is not located in the racks, system
+	is informed with an alarm.
+	\end{itemize}
+		
+\item \textit{The number of packets in the system can at most be equal to the number of racks}
+	\begin{itemize}
+	\item The number packets in the racks cannot be greater than the 
+	number of racks in the system.
+	\end{itemize}
+\end{enumerate}
+%End of translations.
