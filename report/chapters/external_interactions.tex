@@ -4,30 +4,28 @@ This section lists the external interactions for the packet storage system. Thes
 
 \textit{Note:} The parameters for the actions can be shared, which means that they are part of two different actions which need to be synchronized.
 
-
-% Table
-
-
-Table \ref{tab: list_of_components} is a reference list of the final components that were used.
-
-%Item#, Description, Qty, Supplier, Price
 \begin{table}[ht]
 \centering
-\begin{tabular}{|l|c|c|}\hline
+\begin{tabular}{|l|l|l|}\hline
 Action & Description & Parameter \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-DoIt & --- & Param1 \\\hline
-{TOTAL PRICE} & - & 356 \\\hline
+WantIn & Environment requires a packet to be inserted & packetID \\\hline
+QueryRackSpace & Queries if a position is available in racks & bool \\\hline
+InputConveyor\_status & Queries if the input conveyor has an empty space & state \\\hline
+GetPacket & Gets a packet and places it onto conveyor belt & packetID\\\hline
+ElevatorStatus & Indicates the state and location of elevator & elevID, state \\\hline
+ConveyortoElevator\_Comm & Load a packet from input conveyor to elevator & packetID, elevID \\\hline
+ElevatortoRack\_Comm & Load a packet from elevator to rack & elevID, rackID, packetID \\\hline
+RacktoElevator\_Comm & Load a packet from rack to elevator & elevID, rackID, packetID \\\hline
+ElevatortoConveyor\_Comm & Load a packet from elevator to output conveyor & elevID, %packetID
+\\\hline
+OutputConveyor\_status & Queries if the output conveyor has an empty space & state \\\hline
+WantOut & Environment requires a packet from the system & packetID \\\hline
+RequestPacket & Receive request for a packet & packetID \\\hline
+DeliverPacket & Delivers a packet to the system & packetID \\\hline
+RackStatus & Get number of packets currently in the system & Nat \\\hline
+QueryPacket & (Elevator) queries the position of a packet on rack & packetID \\\hline
+GetElevatorPos & Queries the position of an elevator & elevID, pos \\\hline
+MoveElevator & Moves the elevator to a rack position & elevID, rackID \\\hline
 \end{tabular}
 \caption{External interactions: Packet storage system }
 \label{tab: ext_interactions}
