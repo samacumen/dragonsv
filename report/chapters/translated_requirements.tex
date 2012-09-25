@@ -31,7 +31,7 @@ This section lists the requirements from section \ref{sec:global_req} in terms o
 \item \textit{Packet is exchanged only when elevator platform is at the same level as that of a rack}
 	\begin{itemize}
 	\item  If position of rack and elevator platform are different, no
-	packet is stored onto the rack.
+	packet can be stored onto the rack from the elevator.
 	\item  If position of rack and elevator platform are different, no
 	packet is loaded onto the elevator platform from the rack.
 	\end{itemize}
@@ -77,8 +77,8 @@ This section lists the requirements from section \ref{sec:global_req} in terms o
 \item \textit{If a packet is unable to be located, a unique alarm must 
 	be generated}
 	\begin{itemize}	
-	\item If the requested packet is not located in the racks, system
-	is informed with an alarm.
+	\item If the requested packet is not located in the racks, a alarm
+	is generated.
 	\end{itemize}
 		
 \item \textit{The number of packets in the system can at most be equal to the number of racks}
