@@ -1,11 +1,13 @@
--In external interactions statement 3 "InputConveyor_status". Revise the parameter in such a way that it represents 4 different state of conveyor belt(FullMoving, FullStopped, EmptyMoving, EmptyStopped). The concern in this case is, does it make the complex too complex or not.(Is it possible to check to status of converyor belt often[moving or stopped]?? Labelled transition diagram becomes too complex that tool cannot produce it.) If we don't specify any parameter for movement of conveyor belt, the system still can work without deadlock or not??
+-In external interactions statement 3 "InputConveyor_status". 
+Revise the parameter in such a way that it represents 4 different state of conveyor belt(FullMoving, FullStopped, EmptyMoving,
+EmptyStopped). The concern in this case is, does it make the complex too complex or not.
+(Is it possible to check to status of converyor belt often[moving or stopped]?? Labelled transition diagram becomes too 
+complex that tool cannot produce it.) If we don't specify any parameter for movement of conveyor belt, the system still
+can work without deadlock or not??
 
+-Add internal interaction: similar to QueryRackSpace.(C1 will ask to C5 for empty rack in the system): Emre can explain!
 
--Add internal interaction: similar to QueryRackSpace.(C1 will ask to C5 for empty rack in the system)
-
-
--Communication (synchronization) actions are external or internal??
-
+-Communication (synchronization) actions are external or internal?? When should we have them internal/external, e.g.
 
 -Should we define two different actions for interactions where we ask something from other controller and wait for answer, or it can be done in just one communication(action)?
 

@@ -52,8 +52,8 @@ This section lists the requirements from section \ref{sec:global_req} in terms o
 \item \textit{Packets are always delivered in the same order as
 	requested}	
 	\begin{itemize}
-	\item It is not possible to receive packet(s) in an order different
-	than as requested.
+	\item Reception of latest requested packet cannot happen before
+	the reception of the previously 'unprocessed' requested packet.
 	\end{itemize}
 	
 \item \textit{If a packet is ready to enter and there is a free
