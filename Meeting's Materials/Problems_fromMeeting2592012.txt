@@ -9,4 +9,4 @@
 
 -Should we define two different actions for interactions where we ask something from other controller and wait for answer, or it can be done in just one communication(action)?
 
--
+-reception of latest requested packet cannot be happened before the reception of the previously unprocessed requested packet.
