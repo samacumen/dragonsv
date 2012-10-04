@@ -1,0 +1,49 @@
+QueryRackSpace & Queries if a position is available in racks & bool
+
+commPacketOnConveyor & C1 Informs C5 of the packet on conveyor & packetID 
+
+commOrderMoveElevator & C5 Orders elevator to go to a target position & elevID, pos
+
+commAckElevatorMoved & Elevator controllers acknowledge C5 of the completion of elevator movement & bool: b
+
+commConveyorToElev & C5 informs C1 that rotate the conveyor belt and do the package exchange between conveyor belt and elevator
+
+commPacketOnElevAck & Elevator controllers acknowledge C5 once packet is received by elevator & 
+
+commElevToRack  & C5 communicates with elevator controllers in order to load of packet to the rack &
+
+commPacketLoadedToRack  & Elevator controllers inform C5 that loading of package to rack action is completed. &
+
+commRequestPacket & Request packet to C5 & packetID 
+
+commPacketExists & Information provided by C5 to C2 regarding the requested packet is in system or not & 
+
+commRackToElev & Communication of reception of packet from conveyor & 
+
+commElevToConveyor & Communication of unloading a packet to conveyor & 
+
+commElevToRack & Elevator communication with C5 after an outgoing transaction & 
+
+
+
+QueryRackSpace           ***** C1 -> C5 *****  bool
+commPacketOnConveyor     ***** C1 -> C5 *****  packetID, convID
+commConveyorToElev       ***** C5 -> C1 *****  ElevID, convID
+commPacketOnElevAck      ***** C3 -> C5 *****  packetID
+commOrderMoveElevator    ***** C5 -> C3 *****  ElevID, pos
+commAckElevatorMoved     ***** C3 -> C5 *****  bool
+commElevToRack           ***** C5 -> C3 *****  ElevID
+commPacketLoadedToRack   ***** C3 -> C5 *****  packetID
+
+
+
+commRequestPacket        ***** C2 -> C5 *****  packetID
+commPacketExists         ***** C5 -> C2 *****  packetID
+commOrderMoveElevator    ***** C5 -> C3 *****  ElevID
+commAckElevatorMoved     ***** C3 -> C5 *****  ElevID
+commRackToElev           ***** C5 -> C3 *****  ElevID
+commPacketOnElevAck      ***** C3 -> C5 *****  packetID
+commOrderMoveElevator    ***** C5 -> C3 *****  ElevID, pos
+commAckElevatorMoved     ***** C3 -> C5 *****  ElevID
+commElevToConveyor       ***** C5 -> C3 *****  ElevID, convID
+commPacketOnConveyor     ***** C2 -> C5 *****  convID, packetID
