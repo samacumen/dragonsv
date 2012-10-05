@@ -29,9 +29,6 @@ Controller C2 initiates DeliverPacket action to deliver the packet with an $id$.
 \item \textbf{ConvInToElev(eId: elevID)}
 With this action, controller C1 instructs the real hardware to transfer the packet from input conveyor to the required elevator.
 
-\item \textbf{ConvInToElev(eId: elevID)}
-Controllers C3 or C4 instruct its hardware to transfer the packet from the elevator platform to the rack.
-
 \item \textbf{RackToElev(eId: elevID, rID: rackID)}
 Controller C5 instructs the hardware to transfer the packet from rack to the required elevator.
 
@@ -41,12 +38,6 @@ Controller C3 or C4 instructs the hardware to transfer the packet from elevator 
 \item \textbf{ElevToConvOut(eId: elevID)}
 Controllers C3 or C4 instructs its hardware to transfer the packet from the required elevator platform to the output conveyor.
 %What will happen if we give the elevID to be 1.. it would deadlock?%
-
-<<<<<<< HEAD
-=======
-\item \textbf{GetPosition (eId: elevID, p: pos)}
-Controllers C3 or C4 gets the position $p$ of an elevator with an identifier $id$.
->>>>>>> 8bc1e13ada086cca69ec376e650cd5179d50331c
 
 \end{itemize}
 
@@ -106,40 +97,14 @@ The data types used are described in table \ref{tab: data_types}.
 Datatype & OfType & Range$\slash$Members\\\hline
 packetID & $Nat+$ & {1..N} \\\hline
 elevID & $Nat+$ & {1, 2}\\\hline
-rackID & $Nat+$ & {1, 2}\\\hline
-pos & $Int$ & {-1..N}\\\hline
+rackID & $Nat+$ & {1, numRack}\\\hline
+convID & $Nat+$ & {1, 2}\\\hline
+pos & $Int$ & {-1..numRack}\\\hline
 b & $bool$ & {true, false} \\\hline
 \end{tabular}
 \caption{Data types in our design: Packet storage system }
 \label{tab: data_types}
 \end{table}
 
-
-%
-%
-%\begin{table}[ht]
-%\centering
-%\begin{tabular}{|l|l|l|}\hline
-%Action & Description & Parameter \\\hline
-%WantIn & Environment requires a packet to be inserted & packetID \\\hline
-%QueryRackSpace & Queries if a position is available in racks & bool \\\hline
-%AcceptPacket & Accept the packet and put it on the conveyor & packetID \\\hline
-%commPacketOnConveyor & Informs C5 of the packet on conveyor & packetID \\\hline 
-%commOrderMoveElevator & Order elevator to go to a target position & elevID, pos \\\hline
-%commAckElevatorMoved & Acknowledge C5 of the completion of elevator movement & bool: b \\\hline
-%MoveElevator & Move elevator hardware to a target position & elevID, pos \\\hline
-%commConveyorToElev & Transfer packet to conveyor & elevId \\\hline
-%commPacketOnElevAck & Acknowledge C5 once packet is received by elevator \\\hline
-%commElevToRack  & Communication of load of packet to conveyor\\\hline
-%WantOut & User requests a packet to the system & packetID \\\hline
-%commRequestPacket & Request packet to C5 & packetID \\\hline
-%commPacketExists & Information provided by C5 to C2 of availability \\\hline
-%PacketNotFound & Inform user that the packet is not found \\\hline
-%commRackToElev & Communication of reception of packet from conveyor \\\hline
-%commElevToConveyor & Communication of unloading a packet to conveyor \\\hline
-%commElevToRack & Elevator communication with C5 after an outgoing transaction \\\hline
-%DeliverPacket & Delivers the requested packet to user & packetID \\\hline
-%\end{tabular}
-%\caption{External interactions: Packet storage system }
-%\label{tab: ext_interactions}
-%\end{table}
+\textit{Note: The $numRack$ in the system is a constant and can be
+chosen for a design.}
