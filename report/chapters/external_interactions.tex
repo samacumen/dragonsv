@@ -1,39 +1,36 @@
 % External requirements table with actions/ variables/ sync_comm.
 \label{sec:ext_interactions}
-This section lists the external and internal interactions for the packet storage system. These are the actions that are essential for the design of the system. The following describe in brief the external and internal interactions used in the system; the action, it parameters and its description.
+This section lists the interactions used for the packet storage system. Interactions are described by actions that are essential for the controllers to communicate between each other and with the the physical world. The following describe in brief the external and internal interactions used in the system; the action, it parameters and its description.
 
-\subsection*{External Interactions} The external interactions are listed below \ref{tab: extr_interactions}. These actions are visible to the outside world or the user controlling the system.
+\subsection*{External Interactions} These actions are visible to the outside world or to the user controlling the system.
 
 \begin{itemize}
 \item \textbf{WantIn(id: packetID)}
-Environment requires a packet with packet id packetID to be inserted to the system. This is action is managed by controller C1.
+Environment requires a packet with packet $id$ to be inserted into the system. This is action is controlled by controller C1.
 
 \item \textbf{AcceptPacket(id: packetID)}
-Controller C1 is responsible for initiating this action. By performing this action, packet is put on the conveyor belt and C1 informs the user that the packet with $id$ has been accepted by the system.
+This action puts the packet on the conveyor belt received from the user. Controller C1 is responsible for initiating this action.
 
 \item \textbf{RejectPacket(id: packetID)}
-This action is executed by controller C1 in order to inform the user that the packet with $id$ has not been inserted into the system.
+This action informs the user that the packet with $id$ cannot be accepted by the system. This is governed by controller C1.
 
-\item \textbf{MoveElevator(eId: elevID,p: pos)}
-Controllers C3 and C4 initiate the moveElevator action to instruct the real hardware to move the elevator to the target position $p$.
+\item \textbf{MoveElevator(eId: elevID, p: pos)}
+This action is initiated by controllers C3 or C4 to instruct the real hardware to move its elevator with the corresponding id $eId$ to the target position $p$.
 
 \item \textbf{WantOut(id: packetID)}
-User requests the packet with packet with an $id$ to be delivered by the system. This action is initiated by controller C2.
-
-\item \textbf{PacketNotFound(id: packetID)}
-Controller C2 informs the user that the packet with a given $id$ was not found.
+User requests the packet with an $id$ to be delivered by the system. This action is initiated by controller C2.
 
 \item \textbf{DeliverPacket(id: packetID)}
-Controller C2 initiates DeliverPacket action to deliver the packet with an $id$.
+Controller C2 initiates DeliverPacket action to deliver the request packet $id$.
 
 \item \textbf{ConvInToElev(eId: elevID)}
-With this action, controller C1 instructs the real hardware to transfer the packet from input conveyor to the required elevator.
+With this action, controller C1 instructs the hardware to transfer the packet from input conveyor to the required elevator.
 
-\item \textbf{RackToElev(eId: elevID, rID: rackID)}
+\item \textbf{RackToElev(eId: elevID, rId: rackID)}
 Controller C5 instructs the hardware to transfer the packet from rack to the required elevator.
 
-\item \textbf{ElevToRack(eId: elevID, rID: rackID)}
-Controller C3 or C4 instructs the hardware to transfer the packet from elevator to the rack.
+\item \textbf{ElevToRack(eId: elevID, rId: rackID)}
+Controller C3 or C4 instruct the hardware to transfer the packet from elevator to the rack.
 
 \item \textbf{ElevToConvOut(eId: elevID)}
 Controllers C3 or C4 instructs its hardware to transfer the packet from the required elevator platform to the output conveyor.
@@ -46,16 +43,16 @@ The internal interactions are listed below. These actions are hidden to the outs
 
 \begin{itemize}
 \item \textbf{queryRackSpace(b: bool)}
-Queries from controller C5 if a position is available in racks. This is an internal action that is initiated by controller C1.
+Queries controller C5 if a position is available on the racks. This is an internal action that is initiated by controller C1.
 %Should it be a communication??%
 
-\item \textbf{commPacketOnConveyor(id: packetID, cId: convID)}
-This is a synchronizing action whereby controller C1 informs C5 of the packet on conveyor. This action is completed with the acknowledgement from controller C5.
+\item \textbf{commPacketOnInConveyor(id: packetID)}
+This is a synchronizing action whereby controller C1 informs C5 of the packet on the conveyor. This action is completed with the acknowledgement from controller C5.
 
-\item \textbf{commOrderMoveElevator(e:ElevID, p: pos)}
+\item \textbf{commOrderMoveElevator(eId: elevID, p: pos)}
 Controller C5 synchronizes with an elevator controller (C3/C4) to move it to a target position $p$.
 
-\item \textbf{commAckElevatorMoved(b: bool)}
+\item \textbf{commAckElevMoved(b: bool)}
 Elevator controller acknowledges controller C5 of the completion of elevator movement.
 
 \item \textbf{commConveyorToElev(eId: elevID, cId: convID)}
@@ -74,37 +71,32 @@ Elevator controllers inform controller C5 that loading of the packet to the rack
 A synchronization action between controllers C2 and C5 to request a packet with a given $id$.
 
 \item \textbf{commPacketExists(b: bool)}
-Synchronization action that governs the knowledge of the packet availability from rack controller C5 to C1.
+Synchronization action that gains the knowledge of the packet availability from rack controller C5 to C1.
 
-\item \textbf{commRackToElev(eId:  elevID)}
-This action governs the communication of reception of packet from conveyor belt.
+\item \textbf{commRackToElev(eId: elevID)}
+This action indicates the synchronization of reception of packet by the rack.
 
-\item \textbf{commElevToConveyor(eId: ElevID)}
-This action governs the communication of unloading a packet to the conveyor belt.
+\item \textbf{commElevToConveyor(eId: elevID)}
+This action indicates the communication of unloading a packet to the conveyor belt.
 
 \item \textbf{commElevToRack(eId: elevID)}
 Elevator communication with controller C5 after an outgoing transaction is complete.
 \end{itemize}
 
-\subsection*{External Interactions}
-
-
 \subsection*{Data types}
 The data types used are described in table \ref{tab: data_types}.
-\begin{table}[ht]
+\begin{table}[h]
 \centering
 \begin{tabular}{|l|l|l|}\hline
 Datatype & OfType & Range$\slash$Members\\\hline
-packetID & $Nat+$ & {1..N} \\\hline
-elevID & $Nat+$ & {1, 2}\\\hline
-rackID & $Nat+$ & {1, numRack}\\\hline
-convID & $Nat+$ & {1, 2}\\\hline
-pos & $Int$ & {-1..numRack}\\\hline
+packetID & $Nat+$ & { 1..N} \\\hline
+elevID & $Nat+$ & { 1, 2}\\\hline
+rackID & $Nat+$ & { 1, numRack}\\\hline
+pos & $Int$ & {-1, numRack}\\\hline
 b & $bool$ & {true, false} \\\hline
 \end{tabular}
 \caption{Data types in our design: Packet storage system }
 \label{tab: data_types}
 \end{table}
 
-\textit{Note: The $numRack$ in the system is a constant and can be
-chosen for a design.}
+\textit{Note: The $numRack$ in the system is a constant and can be chosen for the given design.}
