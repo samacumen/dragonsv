@@ -11,12 +11,12 @@ This section lists the requirements from section \ref{sec:global_req} in terms o
 	\begin{itemize}
 	\item
 	Whenever an AcceptPacket(id: packetID) action is performed it
-	is not possible to perform another sequence of AcceptPacket(id:
-	packetId) unless an ConvToElevator(e: elevID) action is
-	performed(where, e can be one of the two elevators)
+	is not possible to perform another AcceptPacket(id:
+	packetId) unless a ConvToElevator(e: elevID) action is
+	performed in the meanwhile (where, e can be one of the two elevators)
 	\item Whenever ElevToConvOut(e: elevID) action is performed it is
-	not possible to perform another sequence of ElevToConvOut(e: 
-	elevID)   unless a DeliverPacket(id: packetID) action is performed.
+	not possible to perform another ElevToConvOut(e: 
+	elevID) unless a DeliverPacket(id: packetID) action is performed in the meanwhile.
 	\end{itemize}
 	\textit{Elevator}
 	\begin{itemize}
@@ -28,9 +28,8 @@ This section lists the requirements from section \ref{sec:global_req} in terms o
 	
 	\textit{Rack}
 	\begin{itemize}
-	\item Whenever an ElevToRack(p: pos) action is done it is not
-	possible to perform another ElevToRack(p: pos) unless a RackToElev 
-	(p: pos) action is performed.
+	\item Whenever an ElevToRack(p: pos, r: rackID) action is done it is not
+	possible to perform another ElevToRack(p: pos, r: rackID) unless a RackToElev(p: pos, r: rackID) action is performed.
 	\end{itemize}
 
 \item \textit{ Packet is exchanged only when the elevator platform is at
@@ -44,27 +43,29 @@ the same level as that of a conveyor belt}
 
 \item \textit{Packet is exchanged only when elevator platform is at the same level as that of a rack}
 	\begin{itemize}
-	\item ElevatorToRack(e: elevID) action can only be performed after
+	\item ElevToRack(e: elevID, r: rackID) action can only be performed after
 	MoveElevator(e: elevID, p: pos) action.
 	\end{itemize}
 	
 \item \textit{The two elevators cannot be at the same position}
 	\begin{itemize}
-	\item The GetPosition(e1: elevId, p: pos) action and
-	GetPosition(e2: elevID, p: pos) actions cannot occur
-	simultaneously (from the two controllers C3/C4).\\
-	\textit{Note:} The target position for both elevators has been
-	indicated as $p$.
+	\item If the last action from type MoveElevator(e: elevID, p: pos)
+	there cannot be MoveElevator(e': elevID, p: pos) action unless 
+	MoveElevator(e: elevID, p': pos) action takes place.
+	
+
 	\end{itemize}
 		
 \item \textit{The lower elevator must never pass the upper one}
 	\begin{itemize}
-	\item Controller C4 cannot initiate the MoveElevator(e1: elevID, p1: pos) action when controller C3 is performs GetPosition(e2: elevID, p2: pos) action.
-	\item Controller C3 cannot perform MoveElevator(e2: elevID, p2: pos) 
-	action when controller C4 performs GetPosition(e1: elevID, p1: pos) 
-	action.\\
-	\textit{Note:} Here, p1$<$p2 and e1, e2 is the upper elevator and 
-	lower elevator, respectively.
+	\item Controller C4 cannot initiate the MoveElevator(e: elevID, p: pos) 
+	action if the last type of action of controller C3 is MoveElevator(e': elevID, p': pos).
+	
+	
+	\\
+	\textit{Note:} Here, p$>$p' and e, e' is the upper elevator and 
+	lower elevator, respectively. We assume C4 controller to control
+	the lower elevator and C3 controls the upper elevator.
 	\end{itemize}
 	
 	

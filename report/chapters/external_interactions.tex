@@ -33,15 +33,16 @@ With this action, controller C1 instructs the real hardware to transfer the pack
 Controllers C3 or C4 instruct its hardware to transfer the packet from the elevator platform to the rack.
 Note: We assume that elevator platform and a rack would have the same position during any exchange.
 
-\item \textbf{RackToElev(eId: elevID)}
+\item \textbf{RackToElev(eId: elevID, rID: rackID)}
 Controller C5 instructs the hardware to transfer the packet from rack to the required elevator.
+
+\item \textbf{ElevToRack(eId: elevID, rID: rackID)}
+Controller C3 or C4 instructs the hardware to transfer the packet from elevator to the rack.
 
 \item \textbf{ElevToConvOut(eId: elevID)}
 Controllers C3 or C4 instructs its hardware to transfer the packet from the required elevator platform to the output conveyor.
 %What will happen if we give the elevID to be 1.. it would deadlock?%
 
-\item \textbf{GetPosition (eId: elevID, p: pos)}
-Get the position $p$ of an elevator with an identifier $id$.
 
 \end{itemize}
 
@@ -101,6 +102,7 @@ The data types used are described in table \ref{tab: data_types}.
 Datatype & OfType & Range$\slash$Members\\\hline
 packetID & $Nat+$ & {1..N} \\\hline
 elevID & $Nat+$ & {1, 2}\\\hline
+rackID & $Nat+$ & {1, 2}\\\hline
 pos & $Int$ & {-1..N}\\\hline
 b & $bool$ & {true, false} \\\hline
 \end{tabular}
