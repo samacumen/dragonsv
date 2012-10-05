@@ -2,26 +2,26 @@
 \label{sec:ext_interactions}
 This section lists the external and internal interactions for the packet storage system. These are the actions that are essential for the design of the system. The following describe in brief the external and internal interactions used in the system; the action, it parameters and its description.
 
-\subsection*{External Interactions} The external interactions are listed under table \ref{tab: extr_interactions}. These actions are visible to the outside world or the user controlling the system.
+\subsection*{External Interactions} The external interactions are listed below \ref{tab: extr_interactions}. These actions are visible to the outside world or the user controlling the system.
 
 \begin{itemize}
 \item \textbf{WantIn(id: packetID)}
 Environment requires a packet with packet id packetID to be inserted to the system. This is action is managed by controller C1.
 
 \item \textbf{AcceptPacket(id: packetID)}
-Controller C1 is responsible of initiating this action. By performing this action, packet is put on the conveyor belt and C1 informs the user that packet with \textit{packedID} has been accepted to the system.
+Controller C1 is responsible for initiating this action. By performing this action, packet is put on the conveyor belt and C1 informs the user that the packet with $id$ has been accepted by the system.
 
 \item \textbf{RejectPacket(id: packetID)}
-This action is executed by controller C1 in order to inform the user that the packet with \textit{packedID} has not been inserted into the system.
+This action is executed by controller C1 in order to inform the user that the packet with $id$ has not been inserted into the system.
 
 \item \textbf{MoveElevator(eId: elevID,p: pos)}
 Controllers C3 and C4 initiate the moveElevator action to instruct the real hardware to move the elevator to the target position $p$.
 
-\item \textbf{WantOut(id: packeID)}
+\item \textbf{WantOut(id: packetID)}
 User requests the packet with packet with an $id$ to be delivered by the system. This action is initiated by controller C2.
 
 \item \textbf{PacketNotFound(id: packetID)}
-Controller C2 informs the user that the packet with a give $id$ was not found.
+Controller C2 informs the user that the packet with a given $id$ was not found.
 
 \item \textbf{DeliverPacket(id: packetID)}
 Controller C2 initiates DeliverPacket action to deliver the packet with an $id$.
@@ -31,7 +31,6 @@ With this action, controller C1 instructs the real hardware to transfer the pack
 
 \item \textbf{ConvInToElev(eId: elevID)}
 Controllers C3 or C4 instruct its hardware to transfer the packet from the elevator platform to the rack.
-Note: We assume that elevator platform and a rack would have the same position during any exchange.
 
 \item \textbf{RackToElev(eId: elevID, rID: rackID)}
 Controller C5 instructs the hardware to transfer the packet from rack to the required elevator.
@@ -43,15 +42,20 @@ Controller C3 or C4 instructs the hardware to transfer the packet from elevator 
 Controllers C3 or C4 instructs its hardware to transfer the packet from the required elevator platform to the output conveyor.
 %What will happen if we give the elevID to be 1.. it would deadlock?%
 
+<<<<<<< HEAD
+=======
+\item \textbf{GetPosition (eId: elevID, p: pos)}
+Controllers C3 or C4 gets the position $p$ of an elevator with an identifier $id$.
+>>>>>>> 8bc1e13ada086cca69ec376e650cd5179d50331c
 
 \end{itemize}
 
 \subsection*{Internal interactions}
-The internal interactions are listed under table \ref{tab: int_interactions}. These actions are hidden to the outside world or the user controlling the system and take place as interactions within/between individual controllers.
+The internal interactions are listed below. These actions are hidden to the outside world or the user controlling the system and take place as interactions within/between individual controllers.
 
 \begin{itemize}
 \item \textbf{queryRackSpace(b: bool)}
-Queries if a position is available in racks. This is an internal action that is initiated by controller C1.
+Queries from controller C5 if a position is available in racks. This is an internal action that is initiated by controller C1.
 %Should it be a communication??%
 
 \item \textbf{commPacketOnConveyor(id: packetID, cId: convID)}
@@ -73,7 +77,7 @@ Elevator controllers acknowledge controller C5 once packet is received by the el
 Controller C5 communicates with elevator controllers in order to load to packet to the rack.
 
 \item \textbf{commPacketLoadedToRack(id: packetID)}
-Elevator controllers inform C5 that loading of the packet to the rack action is completed.
+Elevator controllers inform controller C5 that loading of the packet to the rack action is completed.
 
 \item \textbf{commRequestPacket(id: packetID)}
 A synchronization action between controllers C2 and C5 to request a packet with a given $id$.

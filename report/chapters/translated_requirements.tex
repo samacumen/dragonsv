@@ -68,43 +68,43 @@ the same level as that of a conveyor belt}
 	the lower elevator and C3 controls the upper elevator.
 	\end{itemize}
 	
-	
 \item \textit{Packets are always delivered in the same order as
 	requested}	
 	\begin{itemize}
-	\item Reception of latest requested packet cannot happen before
-	the reception of the previously 'unprocessed' requested packet.
+	\item 
+	For all WantOut($id$: packetID) and a following WantOut($id$: 
+	packetID) it should be never be possible to perform
+	DeliverPacket($id$: packetID) followed by DeliverPacket($id$: 
+	packetID).
 	\end{itemize}
 	
 \item \textit{If a packet is ready to enter and there is a free
 	position at the rack(s), it will be eventually accepted}
 	\begin{itemize}
-	\item If there is no free position in racks, packet must not be 
-	accepted.
-	\item If there is a free position in the racks and the packet is 
-	ready to enter, it must be eventually stored.
+	\item When WantIn(id: packetID) action triggers and there is a 
+	QueryRackSpace(true) follows, eventually an AcceptPacket(ID) action 
+	must be performed. 
 	\end{itemize}
 	
 \item \textit{If a requested packet is in the system, it will be
 	eventually delivered}
 	\begin{itemize}
-	\item If a packet is requested and it is in the system, it must be
-	delivered eventually.
-	\item If a packet is requested and it is not in the system, no 
-	packet is delivered.
+	\item Whenever there is an AcceptPacket(id: packetID) action 
+	eventually a DeliverPacket(id: packetID) must be performed.  
 	\end{itemize}
 	
 \item \textit{If a packet is unable to be located, a unique alarm must 
 	be generated}
 	\begin{itemize}	
-	\item If the requested packet is not located in the racks, a alarm
-	is generated.
+	\item  Whenever an action AcceptPacket(id: packetID) and eventually 
+	an action PacketNotFound(id: packetID) is performed, an action 
+	Alarm(err: error\_Type) must be followed.
 	\end{itemize}
 		
 \item \textit{The number of packets in the system can at most be equal to the number of racks}
 	\begin{itemize}
-	\item The number packets in the racks cannot be greater than the 
-	number of racks in the system.
+	\item Whenever a QueryRackSpace(false) action occurs the
+	AcceptPacket(id: packetID) action cannot happen. 
 	\end{itemize}
 \end{enumerate}
 %End of translations.
