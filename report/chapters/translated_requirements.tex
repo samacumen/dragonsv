@@ -59,11 +59,8 @@ the same level as that of a conveyor belt}
 \item \textit{The lower elevator must never pass the upper one}
 	\begin{itemize}
 	\item Controller C4 cannot initiate the MoveElevator(e: elevID, p: pos) 
-	action if the last type of action of controller C3 is MoveElevator(e': elevID, p': pos).
-	
-	
-	\\
-	\textit{Note:} Here, p$>$p' and e, e' is the upper elevator and 
+	action if the last type of action of controller C3 is MoveElevator(e': elevID, p': pos).\\
+	\textit{Note:} Here, p $>$ p' and e, e' is the upper elevator and 
 	lower elevator, respectively. We assume C4 controller to control
 	the lower elevator and C3 controls the upper elevator.
 	\end{itemize}
@@ -72,39 +69,42 @@ the same level as that of a conveyor belt}
 	requested}	
 	\begin{itemize}
 	\item 
-	For all WantOut($id$: packetID) and a following WantOut($id$: 
-	packetID) it should be never be possible to perform
-	DeliverPacket($id$: packetID) followed by DeliverPacket($id$: 
-	packetID).
+	For all WantOut($id$: packetID) and a following WantOut($id'$: 
+	packetID) \textit{a DeliverPacket(id: packetID) in the meanwhile} it
+	should be never be possible to perform DeliverPacket($id'$: 
+	packetID) followed by DeliverPacket($id$: packetID).
 	\end{itemize}
 	
 \item \textit{If a packet is ready to enter and there is a free
 	position at the rack(s), it will be eventually accepted}
 	\begin{itemize}
-	\item When WantIn(id: packetID) action triggers and there is a 
-	QueryRackSpace(true) follows, eventually an AcceptPacket(ID) action 
-	must be performed. 
+	\item Whenever the difference in the number of 'AcceptPacket'
+	actions and number of 'DeliverPacket' actions is  smaller than the
+	number of racks in the system, a new AcceptPacket(id: packetID)
+	action should be possible.
 	\end{itemize}
 	
 \item \textit{If a requested packet is in the system, it will be
 	eventually delivered}
 	\begin{itemize}
-	\item Whenever there is an AcceptPacket(id: packetID) action 
-	eventually a DeliverPacket(id: packetID) must be performed.  
+	\item When a WantOut(id: packetID) appears after an AcceptPacket(id: 
+	packetID) then eventually a DeliverPacket(id: packetID) must be
+	performed.  
 	\end{itemize}
 	
-\item \textit{If a packet is unable to be located, a unique alarm must 
+\item \textit{If a packet is unable to be located, a alarm must 
 	be generated}
 	\begin{itemize}	
-	\item  Whenever an action AcceptPacket(id: packetID) and eventually 
-	an action PacketNotFound(id: packetID) is performed, an action 
-	Alarm(err: error\_Type) must be followed.
+	\item  Whenever a WantOut(id: packetID) action is performed after an 
+	AcceptPacket(id: packetID) action, an alarm must be generated if a 
+	DeliverPacket(id: packetID) action is not performed.
 	\end{itemize}
 		
 \item \textit{The number of packets in the system can at most be equal to the number of racks}
 	\begin{itemize}
-	\item Whenever a QueryRackSpace(false) action occurs the
-	AcceptPacket(id: packetID) action cannot happen. 
+	\item The difference in the number of 'AcceptPacket'
+	actions and number of 'DeliverPacket' actions can at most be 
+	equal to the number of racks in the system.
 	\end{itemize}
 \end{enumerate}
 %End of translations.
