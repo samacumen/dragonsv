@@ -6,48 +6,68 @@ This section lists the requirements from section \ref{sec:global_req} in terms o
 
 \begin{enumerate}
 \item \textit{Each elevator, rack and conveyor belt contains at most one packet}
+
+	\textit{Conveyor Belt}
 	\begin{itemize}
-	\item There is a packet on the conveyor belt, so no
-	packet is allowed to enter.
-	\item There is no packet on the conveyor belt, so no 
-	packet is allowed to leave.	
-	\item There is a packet on the elevator, so no packet is 
-	allowed to be loaded.
-	\item There is no packet on the elevator, so no packet is 
-	allowed to be unloaded.
-	\item There is a packet on the rack, so no packet is 
-	allowed to be stored.
-	\item There is no packet on the rack, so no packet is 
-	allowed to leave.
+	\item
+	Whenever an AcceptPacket(id: packetID) action is performed it
+	is not possible to perform another sequence of AcceptPacket(id:
+	packetId) unless an ConvToElevator(e: elevID) action is
+	performed(where, e can be one of the two elevators)
+	\item Whenever ElevToConvOut(e: elevID) action is performed it is
+	not possible to perform another sequence of ElevToConvOut(e: 
+	elevID)   unless a DeliverPacket(id: packetID) action is performed.
 	\end{itemize}
-\item \textit{ Packet is exchanged only when the elevator platform is at the same level as that of a conveyor belt}
+	\textit{Elevator}
 	\begin{itemize}
-	\item  If elevator platform is not on the same level of input 
-	conveyor belt, no packet is loaded onto the elevator.
-	\item If elevator platform is not the same level as the output 
-	conveyor belt, no packet is loaded onto the conveyor belt.
+	\item Whenever a ConvToElev(e: elevID) or RackToElev(e: elevID) 
+	action is performed it is not possible to perform another
+	ConvToElev(e: elevID) or RackToElev(e: elevID) unless an 
+	ElevToRack(e: elevID) or ElevToConv(e: elevID) action is performed.
+	\end{itemize}
+	
+	\textit{Rack}
+	\begin{itemize}
+	\item Whenever an ElevToRack(p: pos) action is done it is not
+	possible to perform another ElevToRack(p: pos) unless a RackToElev 
+	(p: pos) action is performed.
+	\end{itemize}
+
+\item \textit{ Packet is exchanged only when the elevator platform is at
+the same level as that of a conveyor belt}
+	\begin{itemize}
+	\item Whenever a ConvInToElev(e: elevID) or a ElevToConvOut(e: 
+	elevID) is done a MoveElevator(e :elevId, 0: pos) must be
+	performed first.(Assumption: Input and output conveyor are at
+	position zero).	
 	\end{itemize}
 
 \item \textit{Packet is exchanged only when elevator platform is at the same level as that of a rack}
 	\begin{itemize}
-	\item  If position of rack and elevator platform are different, no
-	packet can be stored onto the rack from the elevator.
-	\item  If position of rack and elevator platform are different, no
-	packet is loaded onto the elevator platform from the rack.
+	\item ElevatorToRack(e: elevID) action can only be performed after
+	MoveElevator(e: elevID, p: pos) action.
 	\end{itemize}
-
+	
 \item \textit{The two elevators cannot be at the same position}
 	\begin{itemize}
-	\item  It cannot happen that two elevators are at the same 
-	position.
-	\end{itemize}	
-	
+	\item The GetPosition(e1: elevId, p: pos) action and
+	GetPosition(e2: elevID, p: pos) actions cannot occur
+	simultaneously (from the two controllers C3/C4).\\
+	\textit{Note:} The target position for both elevators has been
+	indicated as $p$.
+	\end{itemize}
+		
 \item \textit{The lower elevator must never pass the upper one}
 	\begin{itemize}
-	\item The lower elevator is always below the upper elevator.
-	\item The lower elevator cannot go to the highest position.
-	\item The upper elevator cannot go to the lowest position.
+	\item Controller C4 cannot initiate the MoveElevator(e1: elevID, p1: pos) action when controller C3 is performs GetPosition(e2: elevID, p2: pos) action.
+	\item Controller C3 cannot perform MoveElevator(e2: elevID, p2: pos) 
+	action when controller C4 performs GetPosition(e1: elevID, p1: pos) 
+	action.\\
+	\textit{Note:} Here, p1$<$p2 and e1, e2 is the upper elevator and 
+	lower elevator, respectively.
 	\end{itemize}
+	
+	
 	
 \item \textit{Packets are always delivered in the same order as
 	requested}	

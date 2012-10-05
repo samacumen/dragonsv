@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.7.21)  25 SEP 2012 21:48
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.7.21)  5 OCT 2012 16:55
 entering extended mode
 **report.tex
 (D:\Documents\git2\report\report.tex
@@ -392,7 +392,8 @@ LaTeX Font Info:    Try loading font information for U+lasy on input line 50.
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 ) [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] (D:\Documents\git2\report
+\report.toc)
 \tf@toc=\write4
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
@@ -404,27 +405,14 @@ l.59 \chapter
 ]
 Chapter 1.
 (D:\Documents\git2\report\chapters/introduction.tex
-
-LaTeX Warning: Reference `fig:packet_storage' on page 2 undefined on input line
- 9.
-
-<./figures/packet_storage_diag.jpg, id=16, 442.65375pt x 394.47375pt>
+<./figures/packet_storage_diag.jpg, id=72, 442.65375pt x 394.47375pt>
 File: ./figures/packet_storage_diag.jpg Graphic file (type jpg)
 
 <use ./figures/packet_storage_diag.jpg>
 Package pdftex.def Info: ./figures/packet_storage_diag.jpg used on input line 1
 3.
 (pdftex.def)             Requested size: 271.44194pt x 241.9107pt.
-
-
-LaTeX Warning: Citation `problem_statement' on page 2 undefined on input line 1
-4.
-
-
-LaTeX Warning: Citation `problem_statement' on page 2 undefined on input line 1
-4.
-
-[2
+ [2
 
  <D:/Documents/git2/report/figures/packet_storage_diag.jpg>]) [3]
 Chapter 2.
@@ -434,62 +422,54 @@ Chapter 2.
 Chapter 3.
 (D:\Documents\git2\report\chapters/external_interactions.tex
 
-LaTeX Warning: Reference `tab: ext_interactions' on page 5 undefined on input l
-ine 3.
+LaTeX Warning: Reference `tab: extr_interactions' on page 5 undefined on input 
+line 5.
 
-
-Overfull \hbox (76.97849pt too wide) in paragraph at lines 9--30
- [][] 
- []
-
-) [5
-
-]
-Chapter 4.
-(D:\Documents\git2\report\chapters/translated_requirements.tex
-
-LaTeX Warning: Reference `sec:global_req' on page 6 undefined on input line 5.
-
-
-LaTeX Warning: Reference `sec:ext_interactions' on page 6 undefined on input li
-ne 5.
-
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 10.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 8.
 ("C:\Program Files (x86)\MiKTeX 2.9_\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 10.
- [6
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 8.
+ [5
 
-]) [7]
+]
+
+LaTeX Warning: Reference `tab: int_interactions' on page 6 undefined on input l
+ine 49.
+
+[6]) [7]
+Chapter 4.
+(D:\Documents\git2\report\chapters/translated_requirements.tex [8
+
+]) [9]
 Chapter 5.
-(D:\Documents\git2\report\chapters/architecture.tex) [8
+(D:\Documents\git2\report\chapters/architecture.tex) [10
 
 ]
 Chapter 6.
-(D:\Documents\git2\report\chapters/model_controller.tex) [9
+(D:\Documents\git2\report\chapters/model_controller.tex) [11
 
 ]
 Chapter 7.
-(D:\Documents\git2\report\chapters/verification.tex) [10
+(D:\Documents\git2\report\chapters/verification.tex) [12
 
 ]
 Chapter 8.
-(D:\Documents\git2\report\chapters/results.tex) [11
+(D:\Documents\git2\report\chapters/results.tex) [13
 
 ]
 Chapter 9.
 (D:\Documents\git2\report\chapters/conclusions.tex)
-(D:\Documents\git2\report\report.bbl [12
+(D:\Documents\git2\report\report.bbl [14
 
-]) [13
+]) [15
 
 ]
 Appendix A.
 (D:\Documents\git2\report\chapters/sourcecode.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 105.
- [14
+ [16
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 105.
@@ -497,40 +477,32 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 105.
 (D:\Documents\git2\report\report.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 105.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 105.
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: B49A590FED9B5F80622C225A5B67BC1D;604.
 
-
-Package rerunfilecheck Warning: File `report.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `report.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  702F11AD4BC854382318CE73350DA355;606.
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 8388 strings out of 495273
- 125387 string characters out of 3181149
- 216517 words of memory out of 3000000
- 11399 multiletter control sequences out of 15000+200000
- 11691 words of font info for 44 fonts, out of 3000000 for 9000
+ 8409 strings out of 495273
+ 125662 string characters out of 3181149
+ 216352 words of memory out of 3000000
+ 11412 multiletter control sequences out of 15000+200000
+ 11998 words of font info for 45 fonts, out of 3000000 for 9000
  54 hyphenation exceptions out of 8191
- 36i,8n,38p,787b,446s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,9n,38p,787b,458s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr10.pfb><C
-:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/
-Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pro
-gram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (15 pages, 146264 bytes).
+<C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
+C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
+/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/P
+rogram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Pro
+gram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Prog
+ram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on report.pdf (17 pages, 180682 bytes).
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
- 51 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 213 PDF objects out of 1000 (max. 8388607)
+ 57 named destinations out of 1000 (max. 500000)
+ 94 words of extra memory for PDF output out of 10000 (max. 10000000)
 
