@@ -9,7 +9,7 @@ This section lists the external and internal interactions for the packet storage
 Environment requires a packet with packet id packetID to be inserted to the system. This is action is managed by controller C1.
 
 \item \textbf{AcceptPacket(id: packetID)}
-Controller C1 initiates the AcceptPacket action in order to accept the packet and put it on the conveyor.
+Controller C1 is responsible of initiating this action. By performing this action, packet is put on the conveyor belt and C1 informs the user that packet with \textit{packedID} has been accepted to the system.
 
 \item \textbf{RejectPacket(id: packetID)}
 This action is executed by controller C1 in order to inform the user that the packet with \textit{packedID} has not been inserted into the system.
