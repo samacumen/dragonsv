@@ -37,8 +37,8 @@ the same level as that of a conveyor belt}
 	\begin{itemize}
 	\item Whenever a ConvInToElev(e: elevID) or a ElevToConvOut(e: 
 	elevID) is done a MoveElevator(e :elevId, 0: pos) must be
-	performed first.\\(Assumption: Input and output conveyor are at
-	position zero).	
+	performed before, without any successor MoveElevator(e :elevId, p: pos) action in the meanwhile where p is a position different than 0.\\(Assumption: Input and output conveyor are at
+	position zero.).	
 	\end{itemize}
 
 \item \textit{Packet is exchanged only when elevator platform is at the same level as that of a rack}
