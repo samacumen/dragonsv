@@ -2,7 +2,7 @@
 % This must cover all possible scenario for each of the global requirements that we decided.
 % I have tried to list out all possiblities (in a way that modal-u-calculus) can be written for these translations (sounding negative is important to formulate modal formula much easily). Refer to the report from last year. Feel free to include anything that I may have missed out. (Leave a comment also so that we are aware what changed)
 
-This section lists the requirements from section \ref{sec:global_req} in terms of interactions described in section \ref{sec:ext_interactions}.
+This chapter lists the requirements from chapter\ref{sec:global_req} in terms of interactions described in chapter \ref{sec:ext_interactions}.
 
 \begin{enumerate}
 \item \textit{Each elevator, rack and conveyor belt contains at most one packet}
@@ -43,15 +43,14 @@ the same level as that of a conveyor belt}
 
 \item \textit{Packet is exchanged only when elevator platform is at the same level as that of a rack}
 	\begin{itemize}
-	\item ElevToRack(e: elevID, r: rackID) action can only be performed after
-	MoveElevator(e: elevID, p: pos) action.
+	\item ElevToRack(e: elevID, r: rackID) and RackToElev(e: elevID, r: rackID) action can only be performed if the last type of action of elevator controller is MoveElevator(e: elevID, p: pos)..
 	\end{itemize}
 	
 \item \textit{The two elevators cannot be at the same position}
 	\begin{itemize}
 	\item If there is a last action from type MoveElevator(e: elevID, p: pos),
 	there cannot be a MoveElevator(e': elevID, p: pos) action unless 
-	MoveElevator(e: elevID, p': pos) action takes place.
+	MoveElevator(e: elevID, p': pos) action takes place.\\(Assumption: where p and p' are different position.)
 
 	\end{itemize}
 		
@@ -69,7 +68,7 @@ the same level as that of a conveyor belt}
 	\begin{itemize}
 	\item 
 	For all WantOut($id$: packetID) and a following WantOut($id'$: 
-	packetID) \textit{a DeliverPacket(id: packetID) in the meanwhile} it
+	packetID), \textit{without a DeliverPacket(id: packetID) in the meanwhile}, it
 	should be never be possible to perform DeliverPacket($id'$: 
 	packetID) followed by DeliverPacket($id$: packetID).
 	\end{itemize}
@@ -86,16 +85,16 @@ the same level as that of a conveyor belt}
 \item \textit{If a requested packet is in the system, it will be
 	eventually delivered}
 	\begin{itemize}
-	\item When a WantOut(id: packetID) appears after an AcceptPacket(id: 
+	\item Whenever a WantOut(id: packetID) action is performed, after an AcceptPacket(id: 
 	packetID) then eventually a DeliverPacket(id: packetID) must be
-	performed.  
+	performed unless DeliverPacket(id: packetID) is performed before WantOut(id: packetID) action. 
 	\end{itemize}
 	
 \item \textit{If a packet is unable to be located, an alarm must 
 	be generated}
 	\begin{itemize}	
 	\item  Whenever a WantOut(id: packetID) action is performed after an 
-	AcceptPacket(id: packetID) action, an alarm must be generated if a 
+	AcceptPacket(id: packetID) action, an PacketNotFound(id: packetID) action must be performed if a 
 	DeliverPacket(id: packetID) action is not performed.
 	\end{itemize}
 		
