@@ -20,16 +20,16 @@ This section lists the requirements from section \ref{sec:global_req} in terms o
 	\end{itemize}
 	\textit{Elevator}
 	\begin{itemize}
-	\item Whenever a ConvToElev(e: elevID) or RackToElev(e: elevID) 
+	\item Whenever a ConvInToElev(e: elevID) or RackToElev(e: elevID) 
 	action is performed it is not possible to perform another
-	ConvToElev(e: elevID) or RackToElev(e: elevID) unless an 
-	ElevToRack(e: elevID) or ElevToConv(e: elevID) action is performed.
+	ConvInToElev(e: elevID) or RackToElev(e: elevID) unless an 
+	ElevToRack(e: elevID) or ElevToConvOut(e: elevID) action is performed.
 	\end{itemize}
 	
 	\textit{Rack}
 	\begin{itemize}
-	\item Whenever an ElevToRack(p: pos, r: rackID) action is done it is not
-	possible to perform another ElevToRack(p: pos, r: rackID) unless a RackToElev(p: pos, r: rackID) action is performed.%What about ConvToElev() missing?
+	\item Whenever an ElevToRack(e: elevID, r: rackID) action is done it is not
+	possible to perform another ElevToRack(e: elevID, r: rackID) unless a RackToElev(e: elevID, r: rackID) action is performed.%What about ConvToElev() missing?
 	\end{itemize}
 
 \item \textit{ Packet is exchanged only when the elevator platform is at
