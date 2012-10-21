@@ -14,7 +14,7 @@ This action puts the packet on the conveyor belt received from the user. Control
 \item \textbf{RejectPacket(id: packetID)}
 This action informs the user that the packet with $id$ cannot be accepted by the system. This is governed by controller C1.
 
-\item \textbf{MoveElevator(eId: elevID, p: pos)}
+\item \textbf{MoveElevator(eId: elevID, p: position)}
 This action is initiated by controllers C3 or C4 to instruct the real hardware to move its elevator with the corresponding id $eId$ to the target position $p$.
 
 \item \textbf{PacketNotFound(id: packetID)}
@@ -26,16 +26,16 @@ User requests the packet with an $id$ to be delivered by the system. This action
 \item \textbf{DeliverPacket(id: packetID)}
 Controller C2 initiates DeliverPacket action to deliver the request packet $id$.
 
-\item \textbf{ConvInToElev(eId: elevID)}
+\item \textbf{ConvToElev(eId: elevID)}
 With this action, controller C1 instructs the hardware to transfer the packet from input conveyor to the required elevator.
 
-\item \textbf{RackToElev(eId: elevID, rId: rackID)}
+\item \textbf{RackToElev(eId: elevID)}
 Controller C5 instructs the hardware to transfer the packet from rack to the required elevator.
 
-\item \textbf{ElevToRack(eId: elevID, rId: rackID)}
+\item \textbf{ElevToRack(eId: elevID)}
 Controller C3 or C4 instruct the hardware to transfer the packet from elevator to the rack.
 
-\item \textbf{ElevToConvOut(eId: elevID)}
+\item \textbf{ElevToConv(eId: elevID)}
 Controllers C3 or C4 instructs its hardware to transfer the packet from the required elevator platform to the output conveyor.
 %What will happen if we give the elevID to be 1.. it would deadlock?%
 
@@ -49,22 +49,23 @@ The internal interactions are listed below. These actions are hidden to the outs
 Queries controller C5 if a position is available on the racks. This is an internal action that is initiated by controller C1.
 %Should it be a communication??%
 
-\item \textbf{commPacketOnInConveyor(id: packetID)}
+\item \textbf{commPacketOnInConv(id: packetID)}
 This is a synchronizing action whereby controller C1 informs C5 of the packet on the conveyor. This action is completed with the acknowledgement from controller C5.
 
-\item \textbf{commOrderMoveElevator(eId: elevID, p: pos)}
+\item \textbf{commOrderMoveElev(eId: elevID, p: position)}
 Controller C5 synchronizes with an elevator controller (C3/C4) to move it to a target position $p$.
 
-\item \textbf{commAckElevMoved(b: bool)}
+\item \textbf{commAckElevMoved(eId: elevID, p: position)}
 Elevator controller acknowledges controller C5 of the completion of elevator movement.
 
-\item \textbf{commConveyorToElev(eId: elevID, cId: convID)}
+\item \textbf{commConvToElev(eId: elevID)}
 Controller C5 informs C1 to move the conveyor belt and exchange the packet with the elevator with a given $elevID$.
 
 \item \textbf{commPacketOnElevAck(id: packetID)}
 Elevator controllers acknowledge controller C5 once packet is received by the elevator.
 
-\item \textbf{commElevToRack(eId: elevID)}
+%Check for the position.
+\item \textbf{commElevToRack(eId: elevID, p: position)}
 Controller C5 communicates with elevator controllers in order to load to packet to the rack.
 
 \item \textbf{commPacketLoadedToRack(id: packetID)}
@@ -73,17 +74,16 @@ Elevator controllers inform controller C5 that loading of the packet to the rack
 \item \textbf{commRequestPacket(id: packetID)}
 A synchronization action between controllers C2 and C5 to request a packet with a given $id$.
 
+% Earlier we had a position.
 \item \textbf{commPacketExists(b: bool)}
-Synchronization action that gains the knowledge of the packet availability from rack controller C5 to C1.
+Synchronization action that gains the knowledge of the packet availability from rack controller C5 to C2.
 
-\item \textbf{commRackToElev(eId: elevID)}
-This action indicates the synchronization of reception of packet by the rack.
+\item \textbf{commRackToElev(eId: elevID, p: position)}
+Synchronization action between the C5 and C3/C4.
 
-\item \textbf{commElevToConveyor(eId: elevID)}
+\item \textbf{commElevToConv(eId: elevID)}
 This action indicates the communication of unloading a packet to the conveyor belt.
 
-\item \textbf{commElevToRack(eId: elevID)}
-Elevator communication with controller C5 after an outgoing transaction is complete.
 \end{itemize}
 
 \subsection*{Data types}
@@ -94,8 +94,7 @@ The data types used are described in table \ref{tab: data_types}.
 Datatype & OfType & Range$\slash$Members\\\hline
 packetID & $Nat+$ & { 1..N} \\\hline
 elevID & $Nat+$ & { 1, 2}\\\hline
-rackID & $Nat+$ & { 1, numRack}\\\hline
-pos & $Int$ & {-1, numRack}\\\hline
+position & $Int$ & {-1, numRack}\\\hline
 b & $bool$ & {true, false} \\\hline
 \end{tabular}
 \caption{Data types in our design: Packet storage system }
