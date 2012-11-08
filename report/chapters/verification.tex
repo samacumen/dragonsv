@@ -1,0 +1,34 @@
+\section*{Results of Verification}
+
+\subsection*{Data types}
+The verification results so far have been listed below. \ref{tab: data_types}.
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}\hline
+Requirement & Pass/Fail\\\hline
+1.1 & false  \\\hline
+1.2 & true \\\hline
+1.3 & true \\\hline
+1.4 & false \\\hline
+2 &  false \\\hline
+3 &  infinite variable generation\\\hline
+4 &  false \\\hline
+5 &  false \\\hline
+6 &  false \\\hline
+7 &  infinite variable generation\\\hline
+8 &  infinite variable generation\\\hline
+9 &  Not verified yet\\\hline
+10 & Not verified yet\\\hline
+
+\end{tabular}
+\caption{Verification results, In progress}
+\label{tab: data_types}
+\end{table}
+
+\subsection*{Notes}
+Requirement 1.4: (false) We can have two consecutive WantIn without the need of RackToElev action. Rethink requirement.
+There are no deadlocks in the system. The system ended up in 355 state with 691 transitions.
+ 
+\textit{ [21:33:14.640 verbose] done with state space generation (77 levels, 355 states and 691 transitions)}
+
+The possible problems might be with C5 controller, which needs to be carefully evaluated again. Moreover, the modal formulas need to be reviewed also.

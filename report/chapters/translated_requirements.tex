@@ -14,31 +14,49 @@ This chapter lists the requirements from chapter\ref{sec:global_req} in terms of
 	is not possible to perform another AcceptPacket(id:
 	packetId) unless a ConvToElevator(e: elevID) action is
 	performed in the meanwhile (where, e can be one of the two elevators)
-	\item Whenever ElevToConvOut(e: elevID) action is performed it is
-	not possible to perform another ElevToConvOut(e: 
+	
+	\textbf{
+	forall e : elevID, id : PacketID.[true*.AcceptPacket(id).(!ConvToElev(e))*\\.AcceptPacket(id)]false}
+	
+	
+	\item Whenever ElevToConv(e: elevID) action is performed it is
+	not possible to perform another ElevToConv(e: 
 	elevID) unless a DeliverPacket(id: packetID) action is performed in the meanwhile.
+	
+	\textbf{forall e : elevID, id : PacketID. [true*.ElevToConv(e).(!DeliverPacket(id))*\\.ElevToConv(e)]false}
 	\end{itemize}
+	
 	\textit{Elevator}
 	\begin{itemize}
-	\item Whenever a ConvInToElev(e: elevID) or RackToElev(e: elevID) 
+	\item Whenever a ConvToElev(e: elevID) or RackToElev(e: elevID) 
 	action is performed it is not possible to perform another
-	ConvInToElev(e: elevID) or RackToElev(e: elevID) unless an 
+	ConvToElev(e: elevID) or RackToElev(e: elevID) unless an 
 	ElevToRack(e: elevID) or ElevToConvOut(e: elevID) action is performed.
+	
+	\textbf{forall e : elevID . [true*.(RackToElev(e)).(!((ElevToRack(e))\\ $||$ (ElevToConv(e))))*.(RackToElev(e))]false
+	}
+	
+	\textbf{forall e : elevID . [true*.(ConvToElev(e)).(!((ElevToRack(e)) $||$ (ElevToConv(e))))*.(ConvToElev(e))]false
+	}
 	\end{itemize}
 	
 	\textit{Rack}
 	\begin{itemize}
-	\item Whenever an ElevToRack(e: elevID, r: rackID) action is done it is not
-	possible to perform another ElevToRack(e: elevID, r: rackID) unless a RackToElev(e: elevID, r: rackID) action is performed.%What about ConvToElev() missing?
+	\item Whenever an ElevToRack(e: elevID, r: rackID) action is done it is not possible to perform another ElevToRack(e: elevID, r: rackID) unless a RackToElev(e: elevID, r: rackID) action is performed.%What about ConvToElev() missing?
+	
+	\textbf{forall e : elevID. [true*.ElevToRack(e).(!RackToElev(e))*.ElevToRack(e)]false}
 	\end{itemize}
 
 \item \textit{ Packet is exchanged only when the elevator platform is at
 the same level as that of a conveyor belt}
 	\begin{itemize}
-	\item Whenever a ConvInToElev(e: elevID) or a ElevToConvOut(e: 
+	\item Whenever a ConvToElev(e: elevID) or a ElevToConv(e: 
 	elevID) is done a MoveElevator(e :elevId, 0: pos) must be
 	performed before, without any successor MoveElevator(e :elevId, p: pos) action in the meanwhile where p is a position different than 0.\\(Assumption: Input and output conveyor are at
-	position zero.).	
+	position zero.).
+	
+	\textbf{forall e: elevID . [true*.MoveElevator(e,0).\\(!MoveElevator(e,0))*]$<$ConvToElev(e)$>$true $||$ \\$<$ElevToConv(e)$>$true \&\& !(ConvToElev(e) $||$ ElevToConv(e))]false}
+	
 	\end{itemize}
 
 \item \textit{Packet is exchanged only when elevator platform is at the same level as that of a rack}
@@ -46,11 +64,15 @@ the same level as that of a conveyor belt}
 	\item ElevToRack(e: elevID, r: rackID) and RackToElev(e: elevID, r: rackID) action can only be performed if the last type of action of elevator controller is MoveElevator(e: elevID, p: pos)..
 	\end{itemize}
 	
+	\textbf{forall e : elevID, p : Position . [true*.(!MoveElevator(e,p))*.(ElevToRack(e,p) $||$ RackToElev(e,p))]false}	
+	
 \item \textit{The two elevators cannot be at the same position}
 	\begin{itemize}
 	\item If there is a last action from type MoveElevator(e: elevID, p: pos),
 	there cannot be a MoveElevator(e': elevID, p: pos) action unless 
 	MoveElevator(e: elevID, p': pos) action takes place.\\(Assumption: where p and p' are different position.)
+	
+	\textbf{forall e1 : elevID, e2 : elevID, p1 : Position, p2 : Position.\\val((p1 $!=$ p2) \&\& (e1 $!=$ e2)) $=>$ [true*.MoveElevator(e1,p1).\\(!MoveElevator(e1,p2))*.MoveElevator(e2,p1)]false}
 
 	\end{itemize}
 		
@@ -61,6 +83,8 @@ the same level as that of a conveyor belt}
 	\textit{Note:} Here, p $>$ p' and e, e' is the lower and 
 	upper elevator, respectively. We assume C4 controller to control
 	the lower elevator and C3 controls the upper elevator.
+	
+	\textbf{forall e1 : elevID, e2 : elevID, p1 : Position, p2 : Position, p3 : Position.\\ val((p1 $>$ p2) \&\&(p3 $>$ p1)) $=>$ [true*.MoveElevator(C3,p2).\\(!MoveElevator(C3,p3))*.MoveElevator(C4,p1)]false}
 	\end{itemize}
 	
 \item \textit{Packets are always delivered in the same order as
@@ -71,6 +95,9 @@ the same level as that of a conveyor belt}
 	packetID), \textit{without a DeliverPacket(id: packetID) in the meanwhile}, it
 	should be never be possible to perform DeliverPacket($id'$: 
 	packetID) followed by DeliverPacket($id$: packetID).
+	
+   \textbf{forall id : PacketID, id1 : PacketID, id2 : PacketID. val(id1 $!=$ id2) $=>$ [true*.WantOut(id1).(!WantOut(id))*.WantOut(id2).($!$DeliverPacket(id))*.\\DeliverPacket(id2).(!DeliverPacket(id))*DeliverPacket(id1)]false}
+   
 	\end{itemize}
 	
 \item \textit{If a packet is ready to enter and there is a free
@@ -80,6 +107,9 @@ the same level as that of a conveyor belt}
 	actions and number of 'DeliverPacket' actions is  smaller than the
 	number of racks in the system, a new AcceptPacket(id: packetID)
 	action should be possible.
+	
+	\textbf{forall e : elevID, p : Position. nu X(n : Nat = 0). AcceptPacket(id) $||$ $<$queryRackSpace$(1)>$true \&\& [queryRackSpace(1)]X}
+	
 	\end{itemize}
 	
 \item \textit{If a requested packet is in the system, it will be
@@ -88,6 +118,9 @@ the same level as that of a conveyor belt}
 	\item Whenever a WantOut(id: packetID) action is performed, after an AcceptPacket(id: 
 	packetID) then eventually a DeliverPacket(id: packetID) must be
 	performed unless DeliverPacket(id: packetID) is performed before WantOut(id: packetID) action. 
+	
+	\textbf{forall id : PacketID. nu X(n: Nat = 0).[true*.WantIn(id).AcceptPacket(id)]X(n+1) \&\& [true*.WantOut(id).DeliverPacket(id)]X(n-1)}
+	
 	\end{itemize}
 	
 \item \textit{If a packet is unable to be located, an alarm must 
@@ -96,6 +129,11 @@ the same level as that of a conveyor belt}
 	\item  Whenever a WantOut(id: packetID) action is performed after an 
 	AcceptPacket(id: packetID) action, an PacketNotFound(id: packetID) action must be performed if a 
 	DeliverPacket(id: packetID) action is not performed.
+	
+	\textbf{forall id:PacketID [true*.AcceptPacket(id). \\ 
+	true*.WantOut(id)].$<$ true*. 
+	(!DeliverPacket(id))*.PacketNotFound(id).Alarm $>$ true	}
+	
 	\end{itemize}
 		
 \item \textit{The number of packets in the system can at most be equal to the number of racks}
@@ -103,6 +141,10 @@ the same level as that of a conveyor belt}
 	\item The difference in the number of 'AcceptPacket'
 	actions and number of 'DeliverPacket' actions can at most be 
 	equal to the number of racks in the system.
+	
+		\textbf{forall id : PacketID. nu X(n: Nat = 0).[AcceptPacket(id)]X(n+1) \&\& [DeliverPacket(id)]X(n-1) \&\&
+mu Y(n': Nat $<$ MaxPositions).\\((n'$<$ MaxPositions) $||$ [!(AcceptPacket(id) \&\& DeliverPacket(id))]Y(n') \&\& [AcceptPacket(id)]Y(n'+1)[DeliverPacket(id)]Y(n'-1)}
+
 	\end{itemize}
 \end{enumerate}
 %End of translations.
