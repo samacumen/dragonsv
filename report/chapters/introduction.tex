@@ -3,11 +3,10 @@
 % How many controllers it has (and why)
 % What is in the report (section-wise)
 
-The project described in this report discusses the design and verification of a small packet storage system. The packet storage system is inspired by the distributed controller of an operational product manufactured by Vanderlande, a Dutch company. 
-The aim of this project is to understand and formulate the requirements of such a system, design the system and in the end verify that the system would meet the proposed requirements when in operation under different circumstance.
+The project described in this report is based on the modelling and verification of a packet storage system. The packet storage system is inspired by the distributed controller of an operational product manufactured by Vanderlande, a Dutch company. 
+The aim of this project is to model the system such that it uses $5$ controllers, which can communicate with each other, $2$ elevator platforms, one rack where packets could be stored and a conveyor each for accepting and delivering packets.
 
-The packet storage system consists of two conveyor belts, one for receiving a packet into the system and the other for delivering the packet out of the system. The system consists of several racks where packets can be stored. The packets are stored by means of two elevator platforms (situated serially, one above the other). Moreover, there are five controllers in the system which run in parallel. Figure \ref{fig:packet_storage} shows the diagram of such a system. The controller C1 controls the input conveyor belt, controller C2 controls the output conveyor belt, conveyor C3 and C4 operate its respective elevators and controller C5 keeps track of all the information about racks, packet storage and its dispatch.
-
+The figure \ref{fig:packet_storage} below shows the high level view of such a system.
 \begin{figure}[h]
 \center
 \includegraphics[width=0.6\textwidth]{packet_storage_diag}
@@ -15,7 +14,8 @@ The packet storage system consists of two conveyor belts, one for receiving a pa
 \label{fig:packet_storage}
 \end{figure}
 
-There are however, certain constraints to be understood for the given system. For example, the number of packets on the conveyor belt, rack slots and elevator platform can store at most one packet at a time, etc. Further constraints are discussed in the next chapter under global requirements.
+Our motivation in this project is to model these $5$ controllers with their interactions, describe their behaviour using mCRL2 language and then to perform verification using mCRL2 toolset to prove that all the requirements of the system are met.
 
-The chapters described in the report are the global requirements, external interactions in the system, translated requirements, the architecture of the system transpired, discussion on controllers with its labelled transition diagram(LTS) and finally discuss the verification of its global requirements.
-The system is to be modelled to be intelligent to fulfil the basic requirements desired from such a system.
+The next section in the report describes the \textit{system details and design decisions}. In the subsequent section, the \textit{global requirements} for such a system chosen are listed out in brief, along with high level \textit{architecture} of the system. 
+
+Further sections describe the external interactions in the system, translated requirements, discussion on controllers with its labelled transition diagram(LTS).In the end, verification of these requirements is done using modal calculus and verification tools as part of mCRL2 tool set. The verification is done to assert that the stated requirements are same as what system can achieve, and does not deviate from the actual model design.

@@ -1,9 +1,10 @@
 \select@language {english}
 \select@language {english}
-\contentsline {chapter}{\numberline {1}Global requirements}{2}{chapter.1}
-\contentsline {chapter}{\numberline {2}System interactions}{3}{chapter.2}
-\contentsline {chapter}{\numberline {3}Translated requirements}{6}{chapter.3}
-\contentsline {chapter}{\numberline {4}Architecture}{9}{chapter.4}
-\contentsline {chapter}{\numberline {5}Modelling the controller}{11}{chapter.5}
-\contentsline {chapter}{\numberline {6}Verification}{14}{chapter.6}
-\contentsline {chapter}{\numberline {7}MCRL2 code}{15}{chapter.7}
+\contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
+\contentsline {chapter}{\numberline {2}System design details}{4}{chapter.2}
+\contentsline {chapter}{\numberline {3}Global requirements}{6}{chapter.3}
+\contentsline {chapter}{\numberline {4}System interactions}{7}{chapter.4}
+\contentsline {chapter}{\numberline {5}Translated requirements}{10}{chapter.5}
+\contentsline {chapter}{\numberline {6}Modelling the controller}{13}{chapter.6}
+\contentsline {chapter}{\numberline {7}Verification}{16}{chapter.7}
+\contentsline {chapter}{\numberline {8}MCRL2 code}{17}{chapter.8}

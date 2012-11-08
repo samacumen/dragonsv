@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.7.21)  22 OCT 2012 22:46
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.7.21)  8 NOV 2012 22:32
 entering extended mode
 **report.tex
 (D:\Documents\git2\report\report.tex
@@ -413,31 +413,63 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.90 \chapter
-             {Global requirements} [1
+l.86 \chapter
+             {Introduction} [1
 
 ]
 Chapter 1.
-(D:\Documents\git2\report\chapters/global_requirements.tex) [2
+(D:\Documents\git2\report\chapters/introduction.tex
+<./figures/packet_storage_diag.jpg, id=58, 442.65375pt x 394.47375pt>
+File: ./figures/packet_storage_diag.jpg Graphic file (type jpg)
 
-]
+<use ./figures/packet_storage_diag.jpg>
+Package pdftex.def Info: ./figures/packet_storage_diag.jpg used on input line 1
+2.
+(pdftex.def)             Requested size: 271.44194pt x 241.9107pt.
+
+
+LaTeX Warning: Citation `problem_statement' on page 2 undefined on input line 1
+3.
+
+
+LaTeX Warning: Citation `problem_statement' on page 2 undefined on input line 1
+3.
+
+) [2
+
+ <D:/Documents/git2/report/figures/packet_storage_diag.jpg>] [3]
 Chapter 2.
-(D:\Documents\git2\report\chapters/external_interactions.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 8.
+(D:\Documents\git2\report\chapters/system_design.tex
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 4.
 
 ("C:\Program Files (x86)\MiKTeX 2.9_\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 8.
- [3
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 4.
+ [4
+
+]
+<./figures/Architecture_new.jpg, id=77, 481.8pt x 414.04688pt>
+File: ./figures/Architecture_new.jpg Graphic file (type jpg)
+
+<use ./figures/Architecture_new.jpg>
+Package pdftex.def Info: ./figures/Architecture_new.jpg used on input line 44.
+(pdftex.def)             Requested size: 316.67766pt x 272.15352pt.
+) [5 <D:/Documents/git2/report/figures/Architecture_new.jpg>]
+Chapter 3.
+(D:\Documents\git2\report\chapters/global_requirements.tex) [6
+
+]
+Chapter 4.
+(D:\Documents\git2\report\chapters/external_interactions.tex [7
 
 ]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [4] [5]
-Chapter 3.
+) [8] [9]
+Chapter 5.
 (D:\Documents\git2\report\chapters/translated_requirements.tex
 Overfull \hbox (5.9627pt too wide) in paragraph at lines 19--20
 [] \OT1/cmr/bx/n/10.95 forall e : ele-vID, id : Pack-etID.[true*.AcceptPacket(i
@@ -456,7 +488,7 @@ Overfull \hbox (24.11522pt too wide) in paragraph at lines 47--48
 *.ElevToRack(e)]false 
  []
 
-[6
+[10
 
 ]
 Overfull \hbox (11.22473pt too wide) in paragraph at lines 99--100
@@ -464,7 +496,7 @@ Overfull \hbox (11.22473pt too wide) in paragraph at lines 99--100
 /m/n/10.95 !$\OT1/cmr/bx/n/10.95 DeliverPacket(id))*. 
  []
 
-[7]
+[11]
 Overfull \hbox (49.0096pt too wide) in paragraph at lines 122--123
 []\OT1/cmr/bx/n/10.95 forall id : Pack-etID. nu X(n: Nat = 0).[true*.WantIn(id)
 .AcceptPacket(id)]X(n+1)
@@ -476,57 +508,46 @@ Overfull \hbox (29.44939pt too wide) in paragraph at lines 135--136
 .95 true*. (!De-liv-er-Packet(id))*.PacketNotFound(id).Alarm
  []
 
-) [8]
-Chapter 4.
-(D:\Documents\git2\report\chapters/architecture.tex [9
-
-]
-<./figures/Architecture_new.jpg, id=123, 481.8pt x 414.04688pt>
-File: ./figures/Architecture_new.jpg Graphic file (type jpg)
-
-<use ./figures/Architecture_new.jpg>
-Package pdftex.def Info: ./figures/Architecture_new.jpg used on input line 18.
-(pdftex.def)             Requested size: 316.67766pt x 272.15352pt.
-) [10 <D:/Documents/git2/report/figures/Architecture_new.jpg>]
-Chapter 5.
+) [12]
+Chapter 6.
 (D:\Documents\git2\report\chapters/model_controller.tex
-<./figures/model_C1.jpg, id=132, 576.65437pt x 385.44pt>
+<./figures/model_C1.jpg, id=148, 576.65437pt x 385.44pt>
 File: ./figures/model_C1.jpg Graphic file (type jpg)
 
 <use ./figures/model_C1.jpg>
 Package pdftex.def Info: ./figures/model_C1.jpg used on input line 7.
 (pdftex.def)             Requested size: 316.67766pt x 211.67506pt.
 
-<./figures/model_C2.jpg, id=134, 509.65407pt x 357.58594pt>
+<./figures/model_C2.jpg, id=150, 509.65407pt x 357.58594pt>
 File: ./figures/model_C2.jpg Graphic file (type jpg)
 
 <use ./figures/model_C2.jpg>
 Package pdftex.def Info: ./figures/model_C2.jpg used on input line 17.
 (pdftex.def)             Requested size: 316.67766pt x 222.19751pt.
- [11
+ [13
 
  <D:/Documents/git2/report/figures/model_C1.jpg>] <./figures/model_C3.jpg, id=1
-44, 674.52pt x 466.74374pt>
+60, 674.52pt x 466.74374pt>
 File: ./figures/model_C3.jpg Graphic file (type jpg)
 
 <use ./figures/model_C3.jpg>
 Package pdftex.def Info: ./figures/model_C3.jpg used on input line 28.
 (pdftex.def)             Requested size: 316.67766pt x 219.13457pt.
- [12 <D:/Documents/git2/report/figures/model_C2.jpg> <D:/Documents/git2/report/
+ [14 <D:/Documents/git2/report/figures/model_C2.jpg> <D:/Documents/git2/report/
 figures/model_C3.jpg>]
-<./figures/model_C5.jpg, id=152, 849.92531pt x 501.37312pt>
+<./figures/model_C5.jpg, id=167, 849.92531pt x 501.37312pt>
 File: ./figures/model_C5.jpg Graphic file (type jpg)
 
 <use ./figures/model_C5.jpg>
 Package pdftex.def Info: ./figures/model_C5.jpg used on input line 39.
 (pdftex.def)             Requested size: 316.67766pt x 186.8057pt.
-) [13 <D:/Documents/git2/report/figures/model_C5.jpg>]
-Chapter 6.
-(D:\Documents\git2\report\chapters/verification.tex) [14
+) [15 <D:/Documents/git2/report/figures/model_C5.jpg>]
+Chapter 7.
+(D:\Documents\git2\report\chapters/verification.tex) [16
 
 ]
-Chapter 7.
-(D:\Documents\git2\report\chapters/code.tex [15
+Chapter 8.
+(D:\Documents\git2\report\chapters/code.tex [17
 
 ]
 Overfull \hbox (7.49452pt too wide) in paragraph at lines 54--56
@@ -538,7 +559,7 @@ Overfull \hbox (32.74448pt too wide) in paragraph at lines 54--56
 [][][][][][] 
  []
 
-[16] [17]
+[18] [19]
 Overfull \hbox (6.44312pt too wide) in paragraph at lines 139--140
 [][][][][]  
  []
@@ -548,30 +569,34 @@ Overfull \hbox (6.44312pt too wide) in paragraph at lines 141--142
 [][][][][]  
  []
 
-[18])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 136.
- [19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 136.
+[20])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 140.
+ [21]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 140.
  (D:\Documents\git2\report\report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 136.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 136.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 140.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 140.
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: C90027FEFD5AA6F0B4FA1DE22D5B12C2;371.
+(rerunfilecheck)             Checksum: 1C7F9EA69D09AE903FE4287FBD73EC32;428.
+
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8887 strings out of 495273
- 132664 string characters out of 3181149
- 333313 words of memory out of 3000000
- 11684 multiletter control sequences out of 15000+200000
- 12166 words of font info for 46 fonts, out of 3000000 for 9000
+ 8903 strings out of 495273
+ 133065 string characters out of 3181149
+ 333443 words of memory out of 3000000
+ 11693 multiletter control sequences out of 15000+200000
+ 12467 words of font info for 47 fonts, out of 3000000 for 9000
  54 hyphenation exceptions out of 8191
- 36i,10n,40p,936b,1782s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,10n,40p,861b,1782s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
 C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
 /Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/P
@@ -580,9 +605,9 @@ gram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Prog
 ram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program
  Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (20 pages, 497962 bytes).
+Output written on report.pdf (22 pages, 542409 bytes).
 PDF statistics:
- 469 PDF objects out of 1000 (max. 8388607)
- 262 named destinations out of 1000 (max. 500000)
- 82 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 487 PDF objects out of 1000 (max. 8388607)
+ 264 named destinations out of 1000 (max. 500000)
+ 95 words of extra memory for PDF output out of 10000 (max. 10000000)
 

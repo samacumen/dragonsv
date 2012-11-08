@@ -1,7 +1,8 @@
-\BOOKMARK [0][-]{chapter.1}{Global requirements}{}% 1
-\BOOKMARK [0][-]{chapter.2}{System interactions}{}% 2
-\BOOKMARK [0][-]{chapter.3}{Translated requirements}{}% 3
-\BOOKMARK [0][-]{chapter.4}{Architecture}{}% 4
-\BOOKMARK [0][-]{chapter.5}{Modelling the controller}{}% 5
-\BOOKMARK [0][-]{chapter.6}{Verification}{}% 6
-\BOOKMARK [0][-]{chapter.7}{MCRL2 code}{}% 7
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{System design details}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Global requirements}{}% 3
+\BOOKMARK [0][-]{chapter.4}{System interactions}{}% 4
+\BOOKMARK [0][-]{chapter.5}{Translated requirements}{}% 5
+\BOOKMARK [0][-]{chapter.6}{Modelling the controller}{}% 6
+\BOOKMARK [0][-]{chapter.7}{Verification}{}% 7
+\BOOKMARK [0][-]{chapter.8}{MCRL2 code}{}% 8
