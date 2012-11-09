@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.7.21)  8 NOV 2012 22:32
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.7.21)  8 NOV 2012 22:45
 entering extended mode
 **report.tex
 (D:\Documents\git2\report\report.tex
@@ -454,21 +454,21 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 File: ./figures/Architecture_new.jpg Graphic file (type jpg)
 
 <use ./figures/Architecture_new.jpg>
-Package pdftex.def Info: ./figures/Architecture_new.jpg used on input line 44.
+Package pdftex.def Info: ./figures/Architecture_new.jpg used on input line 45.
 (pdftex.def)             Requested size: 316.67766pt x 272.15352pt.
-) [5 <D:/Documents/git2/report/figures/Architecture_new.jpg>]
+) [5 <D:/Documents/git2/report/figures/Architecture_new.jpg>] [6]
 Chapter 3.
-(D:\Documents\git2\report\chapters/global_requirements.tex) [6
+(D:\Documents\git2\report\chapters/global_requirements.tex) [7
 
 ]
 Chapter 4.
-(D:\Documents\git2\report\chapters/external_interactions.tex [7
+(D:\Documents\git2\report\chapters/external_interactions.tex [8
 
 ]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) [8] [9]
+) [9] [10]
 Chapter 5.
 (D:\Documents\git2\report\chapters/translated_requirements.tex
 Overfull \hbox (5.9627pt too wide) in paragraph at lines 19--20
@@ -488,7 +488,7 @@ Overfull \hbox (24.11522pt too wide) in paragraph at lines 47--48
 *.ElevToRack(e)]false 
  []
 
-[10
+[11
 
 ]
 Overfull \hbox (11.22473pt too wide) in paragraph at lines 99--100
@@ -496,7 +496,7 @@ Overfull \hbox (11.22473pt too wide) in paragraph at lines 99--100
 /m/n/10.95 !$\OT1/cmr/bx/n/10.95 DeliverPacket(id))*. 
  []
 
-[11]
+[12]
 Overfull \hbox (49.0096pt too wide) in paragraph at lines 122--123
 []\OT1/cmr/bx/n/10.95 forall id : Pack-etID. nu X(n: Nat = 0).[true*.WantIn(id)
 .AcceptPacket(id)]X(n+1)
@@ -508,46 +508,46 @@ Overfull \hbox (29.44939pt too wide) in paragraph at lines 135--136
 .95 true*. (!De-liv-er-Packet(id))*.PacketNotFound(id).Alarm
  []
 
-) [12]
+) [13]
 Chapter 6.
 (D:\Documents\git2\report\chapters/model_controller.tex
-<./figures/model_C1.jpg, id=148, 576.65437pt x 385.44pt>
+<./figures/model_C1.jpg, id=152, 576.65437pt x 385.44pt>
 File: ./figures/model_C1.jpg Graphic file (type jpg)
 
 <use ./figures/model_C1.jpg>
 Package pdftex.def Info: ./figures/model_C1.jpg used on input line 7.
 (pdftex.def)             Requested size: 316.67766pt x 211.67506pt.
 
-<./figures/model_C2.jpg, id=150, 509.65407pt x 357.58594pt>
+<./figures/model_C2.jpg, id=154, 509.65407pt x 357.58594pt>
 File: ./figures/model_C2.jpg Graphic file (type jpg)
 
 <use ./figures/model_C2.jpg>
 Package pdftex.def Info: ./figures/model_C2.jpg used on input line 17.
 (pdftex.def)             Requested size: 316.67766pt x 222.19751pt.
- [13
+ [14
 
  <D:/Documents/git2/report/figures/model_C1.jpg>] <./figures/model_C3.jpg, id=1
-60, 674.52pt x 466.74374pt>
+64, 674.52pt x 466.74374pt>
 File: ./figures/model_C3.jpg Graphic file (type jpg)
 
 <use ./figures/model_C3.jpg>
 Package pdftex.def Info: ./figures/model_C3.jpg used on input line 28.
 (pdftex.def)             Requested size: 316.67766pt x 219.13457pt.
- [14 <D:/Documents/git2/report/figures/model_C2.jpg> <D:/Documents/git2/report/
+ [15 <D:/Documents/git2/report/figures/model_C2.jpg> <D:/Documents/git2/report/
 figures/model_C3.jpg>]
-<./figures/model_C5.jpg, id=167, 849.92531pt x 501.37312pt>
+<./figures/model_C5.jpg, id=171, 849.92531pt x 501.37312pt>
 File: ./figures/model_C5.jpg Graphic file (type jpg)
 
 <use ./figures/model_C5.jpg>
 Package pdftex.def Info: ./figures/model_C5.jpg used on input line 39.
 (pdftex.def)             Requested size: 316.67766pt x 186.8057pt.
-) [15 <D:/Documents/git2/report/figures/model_C5.jpg>]
+) [16 <D:/Documents/git2/report/figures/model_C5.jpg>]
 Chapter 7.
-(D:\Documents\git2\report\chapters/verification.tex) [16
+(D:\Documents\git2\report\chapters/verification.tex) [17
 
 ]
 Chapter 8.
-(D:\Documents\git2\report\chapters/code.tex [17
+(D:\Documents\git2\report\chapters/code.tex [18
 
 ]
 Overfull \hbox (7.49452pt too wide) in paragraph at lines 54--56
@@ -559,7 +559,7 @@ Overfull \hbox (32.74448pt too wide) in paragraph at lines 54--56
 [][][][][][] 
  []
 
-[18] [19]
+[19] [20]
 Overfull \hbox (6.44312pt too wide) in paragraph at lines 139--140
 [][][][][]  
  []
@@ -569,9 +569,9 @@ Overfull \hbox (6.44312pt too wide) in paragraph at lines 141--142
 [][][][][]  
  []
 
-[20])
+[21])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 140.
- [21]
+ [22]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 140.
  (D:\Documents\git2\report\report.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 140.
@@ -587,8 +587,8 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8903 strings out of 495273
- 133065 string characters out of 3181149
+ 8904 strings out of 495273
+ 133072 string characters out of 3181149
  333443 words of memory out of 3000000
  11693 multiletter control sequences out of 15000+200000
  12467 words of font info for 47 fonts, out of 3000000 for 9000
@@ -605,9 +605,9 @@ gram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Prog
 ram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program
  Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (22 pages, 542409 bytes).
+Output written on report.pdf (23 pages, 543085 bytes).
 PDF statistics:
- 487 PDF objects out of 1000 (max. 8388607)
- 264 named destinations out of 1000 (max. 500000)
+ 492 PDF objects out of 1000 (max. 8388607)
+ 265 named destinations out of 1000 (max. 500000)
  95 words of extra memory for PDF output out of 10000 (max. 10000000)
 
