@@ -124,26 +124,25 @@ In the formula above, two fixed point modalities are used in a nested fashion. T
 \end{itemize}
 
 % Number 8	
-\item \textit{If a packet is unable to be located, an alarm must 
-	be generated}
+\item \textit{If a packet is unable to be located, the user requesting the packet is informed }
 	\begin{itemize}	
 	\item  Whenever a WantOut(id: packetID) action is performed after an 
 	AcceptPacket(id: packetID) action, an PacketNotFound(id: packetID) action must be performed if a DeliverPacket(id: packetID) action is not performed.
-	
-	\textbf{forall id:PacketID [true*.AcceptPacket(id). \\ 
-	true*.WantOut(id)].$<$ true*. 
-	(!DeliverPacket(id))*.PacketNotFound(id).Alarm $>$ true	}
-	
+
+This requirement requires to find a path where the packet is never delivered to the output after having accepted the packet into the system. Since, no such path must exist to have the requirement satisfied, and having no external interaction (expect for PacketNotFound action) to describe this process, this requirement was not verified as no straightforward way was found.
+
+A simpler version is: [true*. PacketNotFound(id)]$<$true$>$true, which describes whenever PacketNotFound action is found, the scenario being described is true and PacketNotFound in itself informs the user of not having found the packet. However, this may not describe the requirement in its fullest terms.
+ 
 \end{itemize}
 
 % Number 9	
 \item \textit{The number of packets in the system can at most be equal to the number of racks}
 	\begin{itemize}
-	\item The difference in the number of 'AcceptPacket'
-	actions and number of 'DeliverPacket' actions can at most be 
-	equal to the number of racks in the system.
+	\item •	The difference in the number of “AcceptPacket” actions and number of “DeliverPacket” actions can at most be equal to the number of racks in the system.
 	
 \textbf{forall id:PacketID. val( id<maxPacketID ) $=>$ \\ nu X(n:Int =$0$). [!(AcceptPacket(id) $||$DeliverPacket(id))] X(n)\\ \&\& [AcceptPacket(id)] X(n+1) \&\& [DeliverPacket(id)] X(n-1)\\ \&\& val(n $>=$ $0$ \&\& n $<=$ $MaxPositions+1$)}	
+
+In this formula we introduce fixed point modality, to find the maximum number of states for the condition \textit{(n = 0 to MaxPositions+1)}. The result of the computation keeps the total packet bound within the maximum number of racks, thus fulfilling the requirement. Note that, we can have MaxPosition + 1 packets in the system.
 
 	\end{itemize}
 \end{enumerate}

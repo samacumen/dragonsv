@@ -9,7 +9,7 @@ In this chapter, we list the global requirements essential for the design of the
 \item Packets are always delivered in the same order as requested.
 \item If a packet is ready to enter and there is a free position at the rack(s), it will be eventually accepted.
 \item If a requested packet is in the system, it will be eventually delivered. %unless the system shuts down
-\item If a packet is unable to be located, an alarm must be generated.
+\item If a packet is unable to be located, the user requesting the packet is informed.
 \item The number of packets in the system can at most be equal to the number of racks.
  
 %\item If the input conveyor malfunctions, the remaining packets inside the system must be able to leave, eventually.
