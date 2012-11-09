@@ -2,148 +2,148 @@
 % This must cover all possible scenario for each of the global requirements that we decided.
 % I have tried to list out all possiblities (in a way that modal-u-calculus) can be written for these translations (sounding negative is important to formulate modal formula much easily). Refer to the report from last year. Feel free to include anything that I may have missed out. (Leave a comment also so that we are aware what changed)
 
-This chapter lists the requirements from chapter\ref{sec:global_req} in terms of interactions described in chapter \ref{sec:ext_interactions}.
+This chapter lists the requirements from chapter\ref{sec:global_req} in terms of interactions described in chapter\ref{sec:ext_interactions}.
+
+\textit{Note: As the running of verification with larger number of ids in the mCRL2 tool takes considerable amount of time, these modal formulae are defined for restricted number of different package ids.
+The number of racks in the system is defined by “MaxPositions” variable.
+The number of different ids for packets is defined by “maxPacketID” variable.}\\
 
 \begin{enumerate}
 \item \textit{Each elevator, rack and conveyor belt contains at most one packet}
 
+% Number 1.1 
 	\textit{Conveyor Belt}
 	\begin{itemize}
 	\item
-	Whenever an AcceptPacket(id: packetID) action is performed it
-	is not possible to perform another AcceptPacket(id:
-	packetId) unless a ConvToElevator(e: elevID) action is
-	performed in the meanwhile (where, e can be one of the two elevators)
+	Whenever an AcceptPacket(id: packetID) action is performed it is not possible to perform another AcceptPacket(id2: packetId) unless a ConvToElevator(e: elevID) action is performed in the meanwhile (where, e can be any one of the two elevators)
 	
 	\textbf{
-	forall e : elevID, id : PacketID.[true*.AcceptPacket(id).(!ConvToElev(e))*\\.AcceptPacket(id)]false}
+	forall id, id2: PacketID . val(id $<$ maxPacketID \&\& id2 $<$ maxPacketID \&\& id $!=$ id2) $=>$ [true*. AcceptPacket(id). (!(ConvToElev(C3) $||$ ConvToElev(C4)))*. AcceptPacket(id2)] false}
 	
+Note that ConvToElev(e) action is extended to ``ConvToElev(C3) $||$ ConvToElev(C4)`` in order to prevent the scenario of finding a trace to ``ConvToElev(C4)`` when the tool is evaluating formula with ``ConvToElev(C3)``. In other words, we prevent all possible scenario of ConvToElev(e), for our two elevators. This puts a stronger restriction.
 	
+% Number 1.2	
 	\item Whenever ElevToConv(e: elevID) action is performed it is
 	not possible to perform another ElevToConv(e: 
 	elevID) unless a DeliverPacket(id: packetID) action is performed in the meanwhile.
 	
-	\textbf{forall e : elevID, id : PacketID. [true*.ElevToConv(e).(!DeliverPacket(id))*\\.ElevToConv(e)]false}
-	\end{itemize}
+	\textbf{forall e: elevID. [true*. ElevToConv(e). (!(DeliverPacket(1) $||$ DeliverPacket(2)))*. ElevToConv(e)]false}
+
 	
+Note that DeliverPacket(id) action is extended to ``DeliverPacket(1) $||$ DeliverPacket(2)`` in order to prevent the scenario of finding a trace to ``DeliverPacket(2)`` when the tool is evaluating formula with ``DeliverPacket(1)``. Similar to the above case, we prevent all possible scenario of DeliverPacket(id), restricted to two $ids$.
+
+\end{itemize}
+	
+% Number 1.3.1 & 1.3.2
 	\textit{Elevator}
 	\begin{itemize}
 	\item Whenever a ConvToElev(e: elevID) or RackToElev(e: elevID) 
 	action is performed it is not possible to perform another
 	ConvToElev(e: elevID) or RackToElev(e: elevID) unless an 
-	ElevToRack(e: elevID) or ElevToConvOut(e: elevID) action is performed.
+	ElevToRack(e: elevID) or ElevToConv(e: elevID) action is performed.
 	
-	\textbf{forall e : elevID . [true*.(RackToElev(e)).(!((ElevToRack(e))\\ $||$ (ElevToConv(e))))*.(RackToElev(e))]false
-	}
+	\textbf{forall e : elevID, p: Position .val(p $>$ -2 \&\& p $!=$ 0 \&\& p $<=$ MaxPositions) $=>$ [true*.(RackToElev(e,p)).(!(ElevToRack(e,p) $||$ ElevToConv(e)))*. (RackToElev(e,p))] false }
 	
-	\textbf{forall e : elevID . [true*.(ConvToElev(e)).(!((ElevToRack(e)) $||$ (ElevToConv(e))))*.(ConvToElev(e))]false
-	}
-	\end{itemize}
-	
-	\textit{Rack}
-	\begin{itemize}
-	\item Whenever an ElevToRack(e: elevID, r: rackID) action is done it is not possible to perform another ElevToRack(e: elevID, r: rackID) unless a RackToElev(e: elevID, r: rackID) action is performed.%What about ConvToElev() missing?
-	
-	\textbf{forall e : elevID. [true*.ElevToRack(e).(!RackToElev(e))*.ElevToRack(e)]false}
+	\textbf{forall e: elevID, p: Position. val(p $>$ -2 \&\& p $!=$ 0  \&\& p $<=$ MaxPositions) $=>$ [true*. ConvToElev(e). (!(ElevToRack(e,p) $||$ ElevToConv(e)))* .ConvToElev(e)] false	}
 	\end{itemize}
 
+% Number 1.4
+	\textit{Rack}
+	\begin{itemize}
+	\item Whenever an ElevToRack(e: elevID, p:Position) action is done it is not possible to perform another ElevToRack(e: elevID, p:Position) unless a RackToElev(e: elevID,p:Position) action is performed.
+	
+	\textbf{forall e: elevID, p : Position .val(p $>$ -2 \&\& p $!=$ 0 \&\& p $<=$ MaxPositions) $=>$ [true*. ElevToRack(e,p). !RackToElev(e,p)*. ElevToRack(e,p)] false }
+	\end{itemize}
+
+% Number 2
 \item \textit{ Packet is exchanged only when the elevator platform is at
 the same level as that of a conveyor belt}
 	\begin{itemize}
-	\item Whenever a ConvToElev(e: elevID) or a ElevToConv(e: 
-	elevID) is done a MoveElevator(e :elevId, 0: pos) must be
-	performed before, without any successor MoveElevator(e :elevId, p: pos) action in the meanwhile where p is a position different than 0.\\(Assumption: Input and output conveyor are at
-	position zero.).
+	\item Whenever a ConvToElev(e: elevID) or a ElevToConv(e: elevID) is done, a MoveElevator(e :elevID, 0: Position) must be performed before, without any successive MoveElevator(e :elevID, p: Position) action in the meanwhile; where p is a position different than 0. (Assumption: Input and output conveyor are at position zero).
 	
-	\textbf{forall e: elevID . [true*.MoveElevator(e,0).\\(!MoveElevator(e,0))*]$<$ConvToElev(e)$>$true $||$ \\$<$ElevToConv(e)$>$true \&\& !(ConvToElev(e) $||$ ElevToConv(e))]false}
+	\textbf{forall e:elevID, p : Position .val(p $>$ -2 \&\& p $!=$ 0 \&\& p $<$ MaxPositions) $=>$ [true*. MoveElevator(e,p). (ConvToElev(e) $||$ ElevToConv(e))] false}
 	
 	\end{itemize}
 
+%Number 3
 \item \textit{Packet is exchanged only when elevator platform is at the same level as that of a rack}
 	\begin{itemize}
-	\item ElevToRack(e: elevID, r: rackID) and RackToElev(e: elevID, r: rackID) action can only be performed if the last type of action of elevator controller is MoveElevator(e: elevID, p: pos)..
+	\item ElevToRack(e: elevID, p: Position) and RackToElev(e: elevID, p:Position) action can only be performed if the last type of action of elevator controller is MoveElevator(e: elevID, p: Position).
 	\end{itemize}
 	
-	\textbf{forall e : elevID, p : Position . [true*.(!MoveElevator(e,p))*.(ElevToRack(e,p) $||$ RackToElev(e,p))]false}	
-	
-\item \textit{The two elevators cannot be at the same position}
-	\begin{itemize}
-	\item If there is a last action from type MoveElevator(e: elevID, p: pos),
-	there cannot be a MoveElevator(e': elevID, p: pos) action unless 
-	MoveElevator(e: elevID, p': pos) action takes place.\\(Assumption: where p and p' are different position.)
-	
-	\textbf{forall e1 : elevID, e2 : elevID, p1 : Position, p2 : Position.\\val((p1 $!=$ p2) \&\& (e1 $!=$ e2)) $=>$ [true*.MoveElevator(e1,p1).\\(!MoveElevator(e1,p2))*.MoveElevator(e2,p1)]false}
+		\textbf{forall e: elevID, p : Position . val( p $>$ -2 \&\& p $<=$ MaxPositions) $=>$ [(!MoveElevator(e,p))*. ElevToRack(e,p)] false}
 
-	\end{itemize}
-		
+% NUmber 4
 \item \textit{The lower elevator must never pass the upper one}
 	\begin{itemize}
-	\item Controller C4 cannot initiate the MoveElevator(e: elevID, p: pos) 
-	action if the last type of action of controller C3 is MoveElevator(e': elevID, p': pos).\\
-	\textit{Note:} Here, p $>$ p' and e, e' is the lower and 
-	upper elevator, respectively. We assume C4 controller to control
-	the lower elevator and C3 controls the upper elevator.
+	\item Controller C3 cannot initiate the MoveElevator(C3: elevID, P3: Position) action if the last type of action of controller C4 is MoveElevator(C4: elevID, P4: Position).\\
 	
-	\textbf{forall e1 : elevID, e2 : elevID, p1 : Position, p2 : Position, p3 : Position.\\ val((p1 $>$ p2) \&\&(p3 $>$ p1)) $=>$ [true*.MoveElevator(C3,p2).\\(!MoveElevator(C3,p3))*.MoveElevator(C4,p1)]false}
-	\end{itemize}
+	\textbf{forall P1, P2, P3, P4: Position. val((P1 $>$ -1 \&\& P1 $<=$ MaxPositions) \&\& (P2 $>=$ -1 \&\& P2 $<$ MaxPositions) \&\& (P3 $>=$ -1 \&\& P3 $<=$ MaxPositions) \&\& (P4 $>=$ -1 \&\& P4 $<$ MaxPositions) \&\& P3 $<$ P4 ) $=>$ $\\$ [ true*. MoveElevator(C4,P4). (!(MoveElevator(C3,P1) $||$ $\\$ MoveElevator(C4,P2))*). MoveElevator(C3,P3) ] false }
+
+Controller C4 cannot initiate the MoveElevator(C4: elevID, P4: Position) action if the last type of action of controller C3 is MoveElevator(C3: elevID, P3: Position). 
+
+	\textbf{forall P1, P2, P3, P4: Position. val((P1 $>$ $-1$ \&\& P1 $<=$ MaxPositions) \&\& (P2 $>=$ $-1$ \&\& P2 $<$ MaxPositions) \&\& (P3 $>=$ $-1$ \&\& P3 $<=$ MaxPositions) \&\& (P4 $>=$ $-1$ \&\& P4 $<$ MaxPositions) \&\& P3 $<$ P4 ) $=>$ $\\$ [ true*. MoveElevator(C3,P3). (!(MoveElevator(C3,P1) $||$ MoveElevator(C4,P2))*). MoveElevator(C4,P4) ]false }
 	
+\textit{Note: Here, we assume C4 controller to control the lower elevator and C3 controls the upper elevator. }
+
+\end{itemize}
+	
+% Number 5
 \item \textit{Packets are always delivered in the same order as
 	requested}	
 	\begin{itemize}
 	\item 
-	For all WantOut($id$: packetID) and a following WantOut($id'$: 
-	packetID), \textit{without a DeliverPacket(id: packetID) in the meanwhile}, it
-	should be never be possible to perform DeliverPacket($id'$: 
-	packetID) followed by DeliverPacket($id$: packetID).
+	As long as the packet storage system has the ``id: PacketID`` and ``id2: PacketID``, for all WantOut(id) and a following WantOut(id2), without a DeliverPacket(id) in the meanwhile, it should be never be possible to perform DeliverPacket(id2) without DeliverPacket(id) before.
 	
-   \textbf{forall id : PacketID, id1 : PacketID, id2 : PacketID. val(id1 $!=$ id2) $=>$ [true*.WantOut(id1).(!WantOut(id))*.WantOut(id2).($!$DeliverPacket(id))*.\\DeliverPacket(id2).(!DeliverPacket(id))*DeliverPacket(id1)]false}
+   \textbf{forall id, id2:PacketID. val(id $!=$ id2 \&\& id $<$ maxPacketID $\\$ \&\& id2 $<$ maxPacketID) $=>$ [(!(WantIn(id) $||$ WantIn(id2)))*. \\ AcceptPacket(id).(!WantOut(id))*. AcceptPacket(id2). (!WantOut(id2))*. WantOut(id). (!WantOut(id2))*. WantOut(id2). (!(DeliverPacket(id)))*. DeliverPacket(id2)] false }
    
-	\end{itemize}
-	
+ \textit{In the first part of formula accepting the packets in the system is described. After that ''WantOut'' actions are taken one by one and eventually delivering of the wrong packet part is implemented at the end of formula.}
+   
+\end{itemize}
+
+% Number 6	
 \item \textit{If a packet is ready to enter and there is a free
 	position at the rack(s), it will be eventually accepted}
 	\begin{itemize}
-	\item Whenever the difference in the number of 'AcceptPacket'
-	actions and number of 'DeliverPacket' actions is  smaller than the
-	number of racks in the system, a new AcceptPacket(id: packetID)
-	action should be possible.
+	\item Whenever the difference in the number of 'AcceptPacket' actions and number of 'DeliverPacket' actions is smaller than or equal than the ``number of racks + 1`` in the system, a new AcceptPacket(id: packetID) action should be possible to take.
 	
-	\textbf{forall e : elevID, p : Position. nu X(n : Nat = 0). AcceptPacket(id) $||$ $<$queryRackSpace$(1)>$true \&\& [queryRackSpace(1)]X}
+	\textbf{forall id:PacketID. val(id $<$ maxPacketID) $=>$ $\\$ nu X(n: Int = $0$). val(n $>=$ 0 \&\& n $<=$ MaxPositions + 1) $=>$ $\\$ [(!WantIn(id))*. WantIn(id)] (mu Y. $<$!(AcceptPacket(id) $||$ RejectPacket(id))$>$ Y $||$  $<$AcceptPacket(id)$>$ X(n+1) $||$ $<$RejectPacket(id)$>$ X(n)) \&\& [!(AcceptPacket(id) $||$ DeliverPacket(id))] X(n) \&\& [DeliverPacket(id)]  X(n-1)}
 	
-	\end{itemize}
+In the formula above, two fixed point modalities are used in a nested fashion. The inner fixed point formula calculates the minimum set of states where we reach “AcceptPacket” or “RejectPacket” action after “WantIn” action. “WantIn” action is supposed to result in AcceptPacket action, as there being a vacancy in the system for packets must allow us to accept a new packet. However, the mechanism, which is implemented in order to prevent accepting different packets with same “id”, creates the traces which results in “RejectPacket” action. Therefore, in the inner fixed point modality both AcceptPacket and RejectPacket actions are handled. In addition to these, the outer fixed point modality is responsible for counting the number of packages in the system.
 	
+\end{itemize}
+
+% Number 7		
 \item \textit{If a requested packet is in the system, it will be
 	eventually delivered}
 	\begin{itemize}
-	\item Whenever a WantOut(id: packetID) action is performed, after an AcceptPacket(id: 
-	packetID) then eventually a DeliverPacket(id: packetID) must be
-	performed unless DeliverPacket(id: packetID) is performed before WantOut(id: packetID) action. 
+	\item Whenever a WantOut(id: packetID) action is performed, after an AcceptPacket(id: packetID) then eventually a DeliverPacket(id: packetID) must be performed unless DeliverPacket(id: packetID) is performed before WantOut(id: packetID) action.
 	
-	\textbf{forall id : PacketID. nu X(n: Nat = 0).[true*.WantIn(id).AcceptPacket(id)]X(n+1) \&\& [true*.WantOut(id).DeliverPacket(id)]X(n-1)}
+	\textbf{forall id: PacketID.val(id $<$ maxPacketID) $=>$ $\\$ [(!AcceptPacket(id))*. AcceptPacket(id). (!(DeliverPacket(id)))*.\\ WantOut(id)] $<$(!DeliverPacket(id))*.DeliverPacket(id)$>$ true}
 	
-	\end{itemize}
-	
+\end{itemize}
+
+% Number 8	
 \item \textit{If a packet is unable to be located, an alarm must 
 	be generated}
 	\begin{itemize}	
 	\item  Whenever a WantOut(id: packetID) action is performed after an 
-	AcceptPacket(id: packetID) action, an PacketNotFound(id: packetID) action must be performed if a 
-	DeliverPacket(id: packetID) action is not performed.
+	AcceptPacket(id: packetID) action, an PacketNotFound(id: packetID) action must be performed if a DeliverPacket(id: packetID) action is not performed.
 	
 	\textbf{forall id:PacketID [true*.AcceptPacket(id). \\ 
 	true*.WantOut(id)].$<$ true*. 
 	(!DeliverPacket(id))*.PacketNotFound(id).Alarm $>$ true	}
 	
-	\end{itemize}
-		
+\end{itemize}
+
+% Number 9	
 \item \textit{The number of packets in the system can at most be equal to the number of racks}
 	\begin{itemize}
 	\item The difference in the number of 'AcceptPacket'
 	actions and number of 'DeliverPacket' actions can at most be 
 	equal to the number of racks in the system.
 	
-		\textbf{forall id : PacketID. nu X(n: Nat = 0).[AcceptPacket(id)]X(n+1) \&\& [DeliverPacket(id)]X(n-1) \&\&
-mu Y(n': Nat $<$ MaxPositions).\\((n'$<$ MaxPositions) $||$ [!(AcceptPacket(id) \&\& DeliverPacket(id))]Y(n') \&\& [AcceptPacket(id)]Y(n'+1)[DeliverPacket(id)]Y(n'-1)}
+\textbf{forall id:PacketID. val( id<maxPacketID ) $=>$ \\ nu X(n:Int =$0$). [!(AcceptPacket(id) $||$DeliverPacket(id))] X(n)\\ \&\& [AcceptPacket(id)] X(n+1) \&\& [DeliverPacket(id)] X(n-1)\\ \&\& val(n $>=$ $0$ \&\& n $<=$ $MaxPositions+1$)}	
 
 	\end{itemize}
 \end{enumerate}

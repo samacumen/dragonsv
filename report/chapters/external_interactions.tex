@@ -29,18 +29,18 @@ Controller C2 initiates $DeliverPacket$ action to deliver the requested packet.
 \item \textbf{ConvToElev(eId: elevID)}
 With this action, the hardware is instructed to transfer the packet from input conveyor to the required elevator.
 
-\item \textbf{RackToElev(eId: elevID)}
-This action instructs the hardware to transfer the packet from rack to the required elevator, controlled by C5 controller.
+\item \textbf{RackToElev(eId: elevID, p: Position )}
+This action instructs the hardware to transfer the packet from a position in rack to the required elevator, controlled by C5 controller.
 
-\item \textbf{ElevToRack(eId: elevID)}
-Controller C3 or C4 instructs the hardware to transfer the packet from elevator to the rack.
+\item \textbf{ElevToRack(eId: elevID, p: Position)}
+Controller C3 or C4 instructs the hardware to transfer the packet from elevator to the rack, to a specific position.
 
 \item \textbf{ElevToConv(eId: elevID)}
 Controllers C3 or C4 instructs its hardware to transfer the packet from the required elevator platform to the output conveyor.
 %What will happen if we give the elevID to be 1.. it would deadlock?%
 
-\item \textbf{Alarm}
-Whenever a requested packet is not found in the system, this action is initiated that generates an alarm. This goes along with the \textit{PacketNotFound} action.
+%\item \textbf{Alarm}
+%Whenever a requested packet is not found in the system, this action is initiated that generates an alarm. This goes along with the \textit{PacketNotFound} action.
 \end{itemize}
 
 \subsection*{Internal interactions}
@@ -91,18 +91,19 @@ This action indicates the synchronization of unloading a packet to the conveyor 
 \end{itemize}
 
 \subsection*{Data types}
-The data types used are described in table \ref{tab: data_types}.
+The data types (and important variables) used are described in table \ref{tab: data_types}.
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|l|}\hline
 Datatype & OfType & Range$\slash$Members\\\hline
-MaxPositions & $Int$ & { N} \\\hline
 packetID & $Pos+$ & { 1..N} \\\hline
 elevID & $ - $ & { Elev1, Elev2}\\\hline
 position & $Int$ & { -1, N}\\\hline
+MaxPositions* & $Int$ & { N} \\\hline
+maxPacketID* & $Int$ & { M} \\\hline
 \end{tabular}
 \caption{Data types in our design: Packet storage system }
 \label{tab: data_types}
 \end{table}
 
-\textit{Note: The $N$ in the system is a constant and can be chosen for the given design. The position is limited between $-1$ and $N$, \textit{MaxPositions} denotes the maximum number of rack slots available.}
+\textit{Note: The $N$ and $M$ in the system is a constant and can be chosen for the given design. The position is limited between $-1$ and $N$, \textit{MaxPositions} denotes the highest position an elevator can reach and also describes the maximum number of rack slots available. The \textit{maxPacketID} is a constant declared indicating the maximum number of unique packets that can be allowed into the system. These two* are variables in the system.}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.7.21)  8 NOV 2012 22:45
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=pdflatex 2011.7.21)  9 NOV 2012 21:37
 entering extended mode
 **report.tex
 (D:\Documents\git2\report\report.tex
@@ -471,83 +471,157 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ) [9] [10]
 Chapter 5.
 (D:\Documents\git2\report\chapters/translated_requirements.tex
-Overfull \hbox (5.9627pt too wide) in paragraph at lines 19--20
-[] \OT1/cmr/bx/n/10.95 forall e : ele-vID, id : Pack-etID.[true*.AcceptPacket(i
-d).(!ConvToElev(e))* 
+Missing character: There is no ‚ in font cmti10!
+Missing character: There is no Ä in font cmti10!
+Missing character: There is no ú in font cmti10!
+Missing character: There is no ‚ in font cmti10!
+Missing character: There is no Ä in font cmti10!
+Missing character: There is no ù in font cmti10!
+Missing character: There is no ‚ in font cmti10!
+Missing character: There is no Ä in font cmti10!
+Missing character: There is no ú in font cmti10!
+Missing character: There is no ‚ in font cmti10!
+Missing character: There is no Ä in font cmti10!
+Missing character: There is no ù in font cmti10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
  []
 
 
-Overfull \hbox (7.26302pt too wide) in paragraph at lines 26--27
-[]\OT1/cmr/bx/n/10.95 forall e : ele-vID, id : Pack-etID. [true*.ElevToConv(e).
-(!DeliverPacket(id))* 
+Overfull \hbox (2.90906pt too wide) in paragraph at lines 23--24
+[]\OT1/cmr/m/n/10.95 Note that Con-vToElev(e) ac-tion is ex-tended to ``Con-vTo
+Elev(C3) $\OMS/cmsy/m/n/10.95 jj$ \OT1/cmr/m/n/10.95 Con-vToElev(C4)``
  []
 
 
-Overfull \hbox (24.11522pt too wide) in paragraph at lines 47--48
-[]\OT1/cmr/bx/n/10.95 forall e : ele-vID. [true*.ElevToRack(e).(!RackToElev(e))
-*.ElevToRack(e)]false 
+Overfull \hbox (12.88567pt too wide) in paragraph at lines 33--34
+[]\OT1/cmr/m/n/10.95 Note that De-liv-er-Packet(id) ac-tion is ex-tended to ``D
+e-liv-er-Packet(1) $\OMS/cmsy/m/n/10.95 jj$ \OT1/cmr/m/n/10.95 De-liv-er-Packet
+(2)``
  []
 
 [11
 
 ]
-Overfull \hbox (11.22473pt too wide) in paragraph at lines 99--100
-\OT1/cmr/bx/n/10.95 [true*.WantOut(id1).(!WantOut(id))*.WantOut(id2).($\OT1/cmr
-/m/n/10.95 !$\OT1/cmr/bx/n/10.95 DeliverPacket(id))*. 
+Overfull \hbox (13.44681pt too wide) in paragraph at lines 45--46
+\OT1/cmr/bx/n/10.95 tions) $\OT1/cmr/m/n/10.95 =\OML/cmm/m/it/10.95 >$ \OT1/cmr
+/bx/n/10.95 [true*.(RackToElev(e,p)).(!(ElevToRack(e,p) $\OMS/cmsy/m/n/10.95 jj
+$ \OT1/cmr/bx/n/10.95 Elev-To-Conv(e)))*.
+ []
+
+
+Overfull \hbox (0.54257pt too wide) in paragraph at lines 55--56
+\OT1/cmr/bx/n/10.95 tions) $\OT1/cmr/m/n/10.95 =\OML/cmm/m/it/10.95 >$ \OT1/cmr
+/bx/n/10.95 [true*. Elev-ToRack(e,p). !Rack-ToElev(e,p)*. Elev-ToRack(e,p)]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
  []
 
 [12]
-Overfull \hbox (49.0096pt too wide) in paragraph at lines 122--123
-[]\OT1/cmr/bx/n/10.95 forall id : Pack-etID. nu X(n: Nat = 0).[true*.WantIn(id)
-.AcceptPacket(id)]X(n+1)
+Overfull \hbox (8.81673pt too wide) in paragraph at lines 98--99
+\OT1/cmr/bx/n/10.95 AcceptPacket(id).(!WantOut(id))*. Ac-cept-Packet(id2). (!Wa
+ntOut(id2))*.
  []
 
 
+Overfull \hbox (1.05795pt too wide) in paragraph at lines 98--99
+\OT1/cmr/bx/n/10.95 WantOut(id). (!WantOut(id2))*. WantOut(id2). (!(De-liv-er-P
+acket(id)))*.
+ []
+
+
+Overfull \hbox (31.25165pt too wide) in paragraph at lines 110--111
+\OT1/cmr/bx/n/10.95 [(!WantIn(id))*. WantIn(id)] (mu Y. $\OML/cmm/m/it/10.95 <$
+\OT1/cmr/bx/n/10.95 !(AcceptPacket(id) $\OMS/cmsy/m/n/10.95 jj$ \OT1/cmr/bx/n/1
+0.95 RejectPacket(id))$\OML/cmm/m/it/10.95 >$
+ []
+
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+[13]
 Overfull \hbox (29.44939pt too wide) in paragraph at lines 135--136
 \OT1/cmr/bx/n/10.95 true*.WantOut(id)].$\OML/cmm/m/it/10.95 <$ \OT1/cmr/bx/n/10
 .95 true*. (!De-liv-er-Packet(id))*.PacketNotFound(id).Alarm
  []
 
-) [13]
+) [14]
 Chapter 6.
 (D:\Documents\git2\report\chapters/model_controller.tex
-<./figures/model_C1.jpg, id=152, 576.65437pt x 385.44pt>
+<./figures/model_C1.jpg, id=153, 576.65437pt x 385.44pt>
 File: ./figures/model_C1.jpg Graphic file (type jpg)
 
 <use ./figures/model_C1.jpg>
 Package pdftex.def Info: ./figures/model_C1.jpg used on input line 7.
 (pdftex.def)             Requested size: 316.67766pt x 211.67506pt.
 
-<./figures/model_C2.jpg, id=154, 509.65407pt x 357.58594pt>
+<./figures/model_C2.jpg, id=155, 509.65407pt x 357.58594pt>
 File: ./figures/model_C2.jpg Graphic file (type jpg)
 
 <use ./figures/model_C2.jpg>
 Package pdftex.def Info: ./figures/model_C2.jpg used on input line 17.
 (pdftex.def)             Requested size: 316.67766pt x 222.19751pt.
- [14
+ [15
 
  <D:/Documents/git2/report/figures/model_C1.jpg>] <./figures/model_C3.jpg, id=1
-64, 674.52pt x 466.74374pt>
+65, 674.52pt x 466.74374pt>
 File: ./figures/model_C3.jpg Graphic file (type jpg)
 
 <use ./figures/model_C3.jpg>
 Package pdftex.def Info: ./figures/model_C3.jpg used on input line 28.
 (pdftex.def)             Requested size: 316.67766pt x 219.13457pt.
- [15 <D:/Documents/git2/report/figures/model_C2.jpg> <D:/Documents/git2/report/
+ [16 <D:/Documents/git2/report/figures/model_C2.jpg> <D:/Documents/git2/report/
 figures/model_C3.jpg>]
-<./figures/model_C5.jpg, id=171, 849.92531pt x 501.37312pt>
+<./figures/model_C5.jpg, id=172, 849.92531pt x 501.37312pt>
 File: ./figures/model_C5.jpg Graphic file (type jpg)
 
 <use ./figures/model_C5.jpg>
 Package pdftex.def Info: ./figures/model_C5.jpg used on input line 39.
 (pdftex.def)             Requested size: 316.67766pt x 186.8057pt.
-) [16 <D:/Documents/git2/report/figures/model_C5.jpg>]
+) [17 <D:/Documents/git2/report/figures/model_C5.jpg>]
 Chapter 7.
-(D:\Documents\git2\report\chapters/verification.tex) [17
+(D:\Documents\git2\report\chapters/verification.tex) [18
 
 ]
 Chapter 8.
-(D:\Documents\git2\report\chapters/code.tex [18
+(D:\Documents\git2\report\chapters/code.tex [19
 
 ]
 Overfull \hbox (7.49452pt too wide) in paragraph at lines 54--56
@@ -559,7 +633,7 @@ Overfull \hbox (32.74448pt too wide) in paragraph at lines 54--56
 [][][][][][] 
  []
 
-[19] [20]
+[20] [21]
 Overfull \hbox (6.44312pt too wide) in paragraph at lines 139--140
 [][][][][]  
  []
@@ -569,9 +643,9 @@ Overfull \hbox (6.44312pt too wide) in paragraph at lines 141--142
 [][][][][]  
  []
 
-[21])
+[22])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 140.
- [22]
+ [23]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 140.
  (D:\Documents\git2\report\report.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 140.
@@ -587,8 +661,8 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8904 strings out of 495273
- 133072 string characters out of 3181149
+ 8903 strings out of 495273
+ 133065 string characters out of 3181149
  333443 words of memory out of 3000000
  11693 multiletter control sequences out of 15000+200000
  12467 words of font info for 47 fonts, out of 3000000 for 9000
@@ -602,12 +676,11 @@ C:/Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:
 /Program Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Pro
 gram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Prog
-ram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Progra
-m Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program
- Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (23 pages, 543085 bytes).
+ram Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9_/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on report.pdf (24 pages, 542477 bytes).
 PDF statistics:
- 492 PDF objects out of 1000 (max. 8388607)
- 265 named destinations out of 1000 (max. 500000)
+ 489 PDF objects out of 1000 (max. 8388607)
+ 264 named destinations out of 1000 (max. 500000)
  95 words of extra memory for PDF output out of 10000 (max. 10000000)
 
